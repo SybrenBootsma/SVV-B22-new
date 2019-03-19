@@ -41,9 +41,9 @@ def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
     matlab.close()
     
     #Run thrust.exe and wait untill it has created matlab.dat
-    print('Running thrust.exe for nonstandart thrust')
+    #print('Running thrust.exe for nonstandart thrust')
     subprocess.run('thrust.exe')
-    print('Done')
+    #print('Done')
     time.sleep(0.5)
     
     #Output is thrust.dat, sum both engine thrusts together
@@ -57,9 +57,9 @@ def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
     matlab.close()
     
     #Run thrust.exe and wait untill it has created matlab.dat
-    print('Running thrust.exe for standart thrust')
+    #print('Running thrust.exe for standart thrust')
     subprocess.run('thrust.exe')
-    print('Done')
+    #print('Done')
     time.sleep(0.5)
     
     #Output is thrust.dat, sum both engine thrusts togeter
