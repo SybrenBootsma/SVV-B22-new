@@ -3,14 +3,14 @@ from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
-#time, pitch_rate, u_s, alpha, pitch, u = Dutch_roll()
-m, hp0, Vt0, alpha0, th0 = Dutch_roll_init()
+time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
+m, hp0, Vt0, alpha0, th0 = Pheugoid_init()
 
 #assymetric
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
-u_a = []
-u_a.append(delta_a)
-u_a.append(delta_r)
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
+#u_a = []
+#u_a.append(delta_a)
+#u_a.append(delta_r)
 
 #data lists of state variables
 
