@@ -2,9 +2,8 @@
 import numpy as np
 import subprocess
 import time
-from Data_Processing import *
 from Velocity_calc import *
-#%% Define functions
+#%% Define function
 
 def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
     
