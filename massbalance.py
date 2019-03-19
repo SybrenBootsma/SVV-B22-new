@@ -38,9 +38,9 @@ tb_bolle = 1000.1
 te_bolle = 1500.1
 Fm = 550. #lbs
 
-t = np.genfromtxt("matlab/Our-data/time.csv", dtype="float")
-FUR = np.genfromtxt("matlab/rh_engine_FU.csv", dtype="float")
-FUL = np.genfromtxt("matlab/lh_engine_FU.csv", dtype="float")
+t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
+FUR = np.genfromtxt("matlab/Test-data/rh_engine_FU.csv", dtype="float")
+FUL = np.genfromtxt("matlab/Test-data/lh_engine_FU.csv", dtype="float")
 
 
 # enter time as a list
