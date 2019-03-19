@@ -76,24 +76,29 @@ def Cl_Cd(BEW, Fused, Vt, rho, S, T):
 # Calculation graphs with results from test 1
 vel1 = velocity(IAS1, hp1, TAT1)  #Output: Vc, M, a, Vt, Ve, rho
 ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T1)
+plt.figure(1)
 plt.plot(AOA1, ClCd1[0])              #Cl-alpha graph
+plt.figure(2)
 plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
+plt.figure(3)
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)
 #print(CLalpha)
 
 #Calculation of Cmalpha, Cmdelta (Measurement 2 + CG shift)
+T2 = thrust(hp2, IAS2, TAT2, FFR2, FFL2)
 vel2 = velocity(IAS2, hp2, TAT2) #Output: Vc, M, a, Vt, Ve, rho
-ClCd2 = Cl_Cd(BEW, Fused2, vel2[3], vel2[5], S, T) #Output: Cl, Cd
+ClCd2 = Cl_Cd(BEW, Fused2, vel2[3], vel2[5], S, T2) #Output: Cl, Cd
 
+T3 = thrust(hp3, IAS3, TAT3, FFR3, FFL3)
 vel3 = velocity(IAS3, hp3, TAT3) #Output: Vc, M, a, Vt, Ve, rho
-ClCd3 = Cl_Cd(BEW, Fused3, vel3[3], vel3[5], S, T) #Output: Cl, Cd
+ClCd3 = Cl_Cd(BEW, Fused3, vel3[3], vel3[5], S, T3) #Output: Cl, Cd
 
 mass = massbalance_gewichthajo(t)
 
 def Cmdelta(BEW, Fused, Ve, Deltae, Cl, Tcs, Tc, mass, StickF):
     
-    Ws = 60500      #Newton
+    Ws = 60500   #Newton
     Mfuel = 4050 #lbs
     Mperson = 695 #kg
     Mtotal = BEW*0.453592 + Mfuel*0.453592 + Mperson - Fused*0.453592 #Total mass in kg
@@ -101,8 +106,8 @@ def Cmdelta(BEW, Fused, Ve, Deltae, Cl, Tcs, Tc, mass, StickF):
     
     Vetilde = Ve*np.sqrt(Ws/W)
     Deltad  = Deltae[1] - Deltae[0] # Deltae based on data 3!
-    Clavg = (Cl[0] + Cl[1])/2   # Cl based on data 3!
-    cbar      = 2.0569	          # mean aerodynamic cord [m]
+    Clavg = (Cl[0] + Cl[1])/2       # Cl based on data 3!
+    cbar      = 2.0569	            # mean aerodynamic cord [m]
     DeltaCG = mass
     
     Cmdelta = -(1/Deltad)*Clavg*(DeltaCG/cbar)
@@ -114,6 +119,9 @@ def Cmdelta(BEW, Fused, Ve, Deltae, Cl, Tcs, Tc, mass, StickF):
     
     return Vetilde, Cmdelta, Destar, Stick
 
-Cmdelta1 = Cmdelta(BEW, Fused2, vel2[4], Deltae2, ClCd3[0], Tcs, Tc, mass, StickF2)
-#plt.plot(Cmdelta1[0], Cmdelta1[2])  #Ve - Delta eq star plot
-#plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
+Cmdelta1 = Cmdelta(BEW, Fused2, vel2[4], Deltae2, ClCd3[0], T2[3], T2[2], mass, StickF2)
+plt.figure(4)
+plt.plot(Cmdelta1[0], Cmdelta1[2])  #Ve - Delta eq star plot
+
+plt.figure(5)
+plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot

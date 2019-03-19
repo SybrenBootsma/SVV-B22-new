@@ -1,27 +1,31 @@
 import numpy as np
-from Ref_data import Pheugoid, Short_period, Pheugoid_init
+from Ref_data import *
 #Citation 550 - Linear simulation
 
-time_p, pitch_rate_p, delta_e_p, alpha_p, pitch_p, u_p = Pheugoid()
-hp0_p, tas_p, alpha0_p, pitch0_p =Pheugoid_init()
+#symmetric
+#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
+m, hp0, Vt0, alpha0, th0 = Dutch_roll_init()
+
+#assymetric
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
+u_a = []
+u_a.append(delta_a)
+u_a.append(delta_r)
 
 #data lists of state variables
-u_data = u_p
-alpha_data = alpha_p
-pitch_data = pitch_p
-pitch_rate_data = pitch_rate_p
+
 
 #Stationary flight condition
 #values guessed for first itteration
-hp0    =   hp0_p 	     # pressure altitude in the stationary flight condition [m]
-Vt0     =  tas_p        # true airspeed in the stationary flight condition [m/sec]
-alpha0 =  alpha0_p      # angle of attack in the stationary flight condition [rad]
-th0    =  pitch0_p        # pitch angle in the stationary flight condition [rad]
+#hp0    =   hp0_p 	     # pressure altitude in the stationary flight condition [m]
+#Vt0     =  tas_p        # true airspeed in the stationary flight condition [m/sec]
+#alpha0 =  alpha0     # angle of attack in the stationary flight condition [rad]
+#th0    =  pitch0       # pitch angle in the stationary flight condition [rad]
 
-time = time_p
+#time = time_p
 
 # Aircraft mass
-m      =   6600.          # mass [kg]
+#m      =   ma          # mass [kg]
 
 # aerodynamic properties
 e      = 0.8         # Oswald factor [ ]
