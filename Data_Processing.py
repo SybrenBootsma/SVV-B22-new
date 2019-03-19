@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from Velocity_calc import velocity
 from massbalance import massbalance_gewichthajo
 from math import *
+from thrust_exceldata import thrust
 t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
 
 # Standard values used for calculation
@@ -20,9 +21,7 @@ g0 = 9.80665 #m/s^2
 lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
-T = 0   #Thrust in Newton
-Tcs = 5
-Tc = 5
+
 
 # Data from Stationary Measurement to calculate Cl, CD
 hp1 = np.array([5010, 5020, 5020, 5030, 5020, 5110]) #Pressure Altitude in ft
@@ -32,7 +31,7 @@ FFL1 = np.array([798, 673, 561, 463, 443, 474]) #Fuel Flow Left in lbs/hr
 FFR1 = np.array([813, 682, 579, 484, 467, 499]) #Fuel Flow Right in lbs/hr
 Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
 TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6, 5.2]) #Total air temperature in Celsius
-
+T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1)[0]
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
 hp2 = np.array([6060, 6350, 6550, 6880, 6160, 5810, 5310]) #Pressure Altitude in ft
@@ -76,10 +75,10 @@ def Cl_Cd(BEW, Fused, Vt, rho, S, T):
 
 # Calculation graphs with results from test 1
 vel1 = velocity(IAS1, hp1, TAT1)  #Output: Vc, M, a, Vt, Ve, rho
-ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T)
-#plt.plot(AOA1, ClCd1[0])              #Cl-alpha graph
-#plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
-#plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
+ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T1)
+plt.plot(AOA1, ClCd1[0])              #Cl-alpha graph
+plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
+plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)
 #print(CLalpha)
 
