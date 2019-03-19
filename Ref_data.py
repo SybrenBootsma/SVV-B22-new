@@ -129,8 +129,10 @@ def Dutch_roll_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
+    delta_r0 = np.mean(delta_r_ref[begin_idx:end_idx])
+    delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])
     
-    return mass, hp0, Vt0, alpha0, th0   
+    return mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0   
 
 
 def Dutch_roll():
@@ -143,15 +145,17 @@ def Dutch_roll():
     
     #shortperiod lists
     time = time_ref[begin_idx:end_idx]
-    
     delta_r = delta_r_ref[begin_idx:end_idx]
     delta_a = delta_a_ref[begin_idx:end_idx]
     beta = beta_ref[begin_idx:end_idx]
     roll = roll_ref[begin_idx:end_idx]
     roll_rate = roll_rate_ref[begin_idx:end_idx]
     yaw_rate = yaw_rate_ref[begin_idx:end_idx]
+    for i in range(len(time)):
+        delta_r[i] = delta_r[i]-delta_r0
+        delta_a[i] = delta_a[i]-delta_a0
     
-    
+
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate
 
 def Dutch_roll_YD_init():
@@ -166,8 +170,10 @@ def Dutch_roll_YD_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
+    delta_r0 = np.mean(delta_r_ref[begin_idx:end_idx])
+    delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])
     
-    return mass, hp0, Vt0, alpha0, th0   
+    return mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 
 
 
 def Dutch_roll_YD():
@@ -187,9 +193,13 @@ def Dutch_roll_YD():
     roll = roll_ref[begin_idx:end_idx]
     roll_rate = roll_rate_ref[begin_idx:end_idx]
     yaw_rate = yaw_rate_ref[begin_idx:end_idx]
+    for i in range(len(time)):
+        delta_r[i] = delta_r[i]-delta_r0
+        delta_a[i] = delta_a[i]-delta_a0
     
+
+    return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
     
-    return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate
 
 
 def Aperiodic_roll_init():
@@ -204,8 +214,10 @@ def Aperiodic_roll_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
+    delta_r0 = np.mean(delta_r_ref[begin_idx:end_idx])
+    delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])
     
-    return mass, hp0, Vt0, alpha0, th0   
+    return mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0
 
 
 def Aperiodic_roll():
@@ -225,11 +237,14 @@ def Aperiodic_roll():
     roll = roll_ref[begin_idx:end_idx]
     roll_rate = roll_rate_ref[begin_idx:end_idx]
     yaw_rate = yaw_rate_ref[begin_idx:end_idx]
+    for i in range(len(time)):
+        delta_r[i] = delta_r[i]-delta_r0
+        delta_a[i] = delta_a[i]-delta_a0
     
-    
-    return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate
 
-def spiral_init():
+    return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
+    
+def Spiral_init():
  
     for i in range(len(time_ref)):
         if time_ref[i] == 3545.-5.:
@@ -241,8 +256,10 @@ def spiral_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
+    delta_r0 = np.mean(delta_r_ref[begin_idx:end_idx])
+    delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])
     
-    return mass, hp0, Vt0, alpha0, th0   
+    return mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 
 
 
 def Spiral():
@@ -262,25 +279,28 @@ def Spiral():
     roll = roll_ref[begin_idx:end_idx]
     roll_rate = roll_rate_ref[begin_idx:end_idx]
     yaw_rate = yaw_rate_ref[begin_idx:end_idx]
+    for i in range(len(time)):
+        delta_r[i] = delta_r[i]-delta_r0
+        delta_a[i] = delta_a[i]-delta_a0
     
+
+    return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
     
-    return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate
+
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Spiral_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral() 
+
+plt.plot(time,delta_r, label = "Roll input")
+plt.plot(time,delta_a, label = 'Yaw input')
+plt.plot(time, beta, label = 'Beta')
+plt.plot(time, roll, label = 'roll')
+plt.plot(time, roll_rate, label = 'roll rate')
+plt.plot(time, yaw_rate, label = 'yaw rate')
+plt.legend()
+plt.show()
 
 
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral() 
-#
-#plt.plot(time,delta_r, label = "Roll input")
-#plt.plot(time,delta_a, label = 'Yaw input')
-#plt.plot(time, beta, label = 'Beta')
-#plt.plot(time, roll, label = 'roll')
-#plt.plot(time, roll_rate, label = 'roll rate')
-#plt.plot(time, yaw_rate, label = 'yaw rate')
-#plt.legend()
-#plt.show()
-#time_p, pitch_rate_p, delta_e_p, alpha_p, pitch_p, u_p = Pheugoid()
-#time_s, pitch_rate_s, delta_e_s, alpha_s, pitch_s, u_s = Short_period()
-#
-#
+
 #
 #plt.subplot(121)
 #plt.plot(time_p,pitch_rate_p, label = 'pitch rate')
