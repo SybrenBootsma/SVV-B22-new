@@ -5,19 +5,9 @@ import time
 from Data_Processing import *
 from Velocity_calc import *
 #%% Define functions
-#Takes pressure altitude in meters and returns ISA temperature in Kelvins
-def hp2TISA(hp):
-    T0 = 288.15
-   
-    if hp<=11000:                #Troposhere
-        t = T0+(-0.0065*hp)    
-    
-    if 11000<hp<=20000:
-        t = 216.65
-    return t
 
-def thrust(hp,IAS,TAT,FFr,FFl):
-    #Create matlab.dat [height M deltatemp FFl FFr]
+def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
+    
     #Pressure alt. (hp)
     hplist = hp
     hplist = [round(i * 0.3048, 4) for i in hplist] #convert feet to meters
@@ -32,7 +22,7 @@ def thrust(hp,IAS,TAT,FFr,FFl):
     
     TISAlist = []
     for i in range(len(hplist)):
-        TISA = hp2TISA(hplist[i])
+        TISA = 288.15+(-0.0065*hplist[i])
         TISAlist.append(TISA)
         
     Dtemplist = TATlist - TISAlist
@@ -48,7 +38,7 @@ def thrust(hp,IAS,TAT,FFr,FFl):
     #Make file for nonstandart thrust
     matlab = open('matlab.dat','w+')
     for i in range(len(hp)):
-         matlab.write(str(int(round(hplist[i],0))) +' '+ str(Mlist[i]) +' '+ str(round(Dtemplist[i],4)) +' '+ str(round(FFllist[i],5)) +' '+ str(round(FFrlist[i],5)) + "\n")
+         matlab.write(str(int(round(hplist[i],0))) +' '+ str(Mlist[1][i]) +' '+ str(round(Dtemplist[i],4)) +' '+ str(round(FFllist[i],5)) +' '+ str(round(FFrlist[i],5)) + "\n")
     matlab.close()
     
     #Run thrust.exe and wait untill it has created matlab.dat
@@ -64,7 +54,7 @@ def thrust(hp,IAS,TAT,FFr,FFl):
     mdot_fs = 0.048 #mfs = 0.048 for standard thrust
     matlab = open('matlab.dat','w+')
     for i in range(len(hp)): 
-         matlab.write(str(int(round(hplist[i],0))) +' '+ str(Mlist[i]) +' '+ str(round(Dtemplist[i],4)) +' '+ str(mdot_fs) +' '+ str(mdot_fs) + "\n")
+         matlab.write(str(int(round(hplist[i],0))) +' '+ str(Mlist[1][i]) +' '+ str(round(Dtemplist[i],4)) +' '+ str(mdot_fs) +' '+ str(mdot_fs) + "\n")
     matlab.close()
     
     #Run thrust.exe and wait untill it has created matlab.dat
