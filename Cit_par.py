@@ -1,8 +1,9 @@
 import numpy as np
-from Ref_data import Pheugoid, Short_period
+from Ref_data import Pheugoid, Short_period, Pheugoid_init
 #Citation 550 - Linear simulation
 
-time_p, pitch_rate_p, delta_e_p, alpha_p, pitch_p, u_p, hp0_p, tas_p, alpha0_p, pitch0_p = Pheugoid()
+time_p, pitch_rate_p, delta_e_p, alpha_p, pitch_p, u_p = Pheugoid()
+hp0_p, tas_p, alpha0_p, pitch0_p =Pheugoid_init()
 
 #data lists of state variables
 u_data = u_p
