@@ -3,14 +3,14 @@ from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
-time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
-hp0, Vt0, alpha0, th0 = Pheugoid_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Dutch_roll()
+m, hp0, Vt0, alpha0, th0 = Dutch_roll_init()
 
 #assymetric
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
-#u_a = []
-#u_a.append(delta_a)
-#u_a.append(delta_r)
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
+u_a = []
+u_a.append(delta_a)
+u_a.append(delta_r)
 
 #data lists of state variables
 
@@ -25,7 +25,7 @@ hp0, Vt0, alpha0, th0 = Pheugoid_init()
 #time = time_p
 
 # Aircraft mass
-m      =   6600.          # mass [kg]
+#m      =   ma          # mass [kg]
 
 # aerodynamic properties
 e      = 0.8         # Oswald factor [ ]
