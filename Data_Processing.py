@@ -4,6 +4,9 @@ Created on Tue Mar 12 15:01:51 2019
 
 @author: Anique
 """
+import pandas as pd
+import seaborn as sns
+
 import numpy as np
 import matplotlib.pyplot as plt
 from Velocity_calc import velocity
@@ -77,10 +80,16 @@ def Cl_Cd(BEW, Fused, Vt, rho, S, T):
 vel1 = velocity(IAS1, hp1, TAT1)  #Output: Vc, M, a, Vt, Ve, rho
 ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T1)
 plt.figure(1)
+plt.xlabel('Alpha')
+plt.ylabel('Cl')
 plt.plot(AOA1, ClCd1[0])              #Cl-alpha graph
 plt.figure(2)
+plt.xlabel('Alpha')
+plt.ylabel('Cd')
 plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
 plt.figure(3)
+plt.xlabel('Cd')
+plt.ylabel('Cl')
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)
 #print(CLalpha)
