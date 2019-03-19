@@ -2,7 +2,7 @@
 import numpy as np
 import subprocess
 import time
-from Velocity_calc import *
+from Velocity_calc import velocity
 #%% Define function
 
 def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
@@ -33,7 +33,6 @@ def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
     FFllist = FFllist * 0.45359237/3600 #convert lbs/hr to kg/s
     FFrlist = FFrlist * 0.45359237/3600
     
-    #%% Create thrust files
     #Make file for nonstandart thrust
     matlab = open('matlab.dat','w+')
     for i in range(len(hp)):
