@@ -102,43 +102,71 @@ sys_a = ctr.ss(A_a, B_a, C_a, D_a)
 #t_s, y_s, xout = forced_response(sys_s,t, u_s, X0=0.)
 
 
-t_s, y_s, xout = ctr.forced_response(sys_s,time_p, delta_e_p, X0=0)
-
+t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
+#t_a, y_a, xouta = ctr.forced_response(sys_a,time, u_a, X0=0)
 
 #t_s, y_s = step_response(sys_s,t, X0 = 0.) 
 #t_a, y_a = step_response(sys_a,t, X0 = 0., input=1) 
 
 
 #t_a, y_a, xout = forced_response(sys_s,t, u_a, X0=0.)
-
-for i in range(len(time_p)):
+#%%
+#plotten symetric 
+for i in range(len(time)):
     y_s[0][i]= y_s[0][i] + Vt0
     y_s[1][i]= y_s[1][i] + alpha0
     y_s[2][i]= y_s[2][i] + th0
 
-
 plt.subplot(221)
 plt.plot(time, y_s[0], label = 'u')
-plt.plot(time, u_data, label = 'u data')
+plt.plot(time, u, label = 'u data')
 plt.legend()
 
 plt.subplot(222)
 plt.plot(time, y_s[1], label = 'alpha')
-plt.plot(time, alpha_data, label = 'alpha data')
+plt.plot(time, alpha, label = 'alpha data')
 plt.legend()
 
 plt.subplot(223)
 plt.plot(time, y_s[2], label = 'theta')
-plt.plot(time, pitch_data, label = 'theta data')
+plt.plot(time, pitch, label = 'theta data')
 plt.legend()
 
 plt.subplot(224)
 plt.plot(time, y_s[3], label = 'pitch rate')
-plt.plot(time, pitch_rate_data, label = 'pitch rate data')
+plt.plot(time, pitch_rate, label = 'pitch rate data')
 plt.legend()
+##%%
+##plotten assymetric 
+#plt.subplot(221)
+#plt.plot(time, y_sa[0], label = 'side slip')
+#plt.plot(time, u_data, label = 'side slip data')
+#plt.legend()
+#
+#plt.subplot(222)
+#plt.plot(time, y_s[1], label = 'side ')
+#plt.plot(time, alpha_data, label = 'alpha data')
+#plt.legend()
+#
+#plt.subplot(223)
+#plt.plot(time, y_s[2], label = 'theta')
+#plt.plot(time, pitch_data, label = 'theta data')
+#plt.legend()
+#
+#plt.subplot(224)
+#plt.plot(time, y_s[3], label = 'pitch rate')
+#plt.plot(time, pitch_rate_data, label = 'pitch rate data')
+#plt.legend()
 
 
-#damp_s = ctr.damp(sys_s)
+
+
+
+
+
+
+
+damp_s = ctr.damp(sys_s)
 #damp_a = ctr.damp(sys_a)
 
 
