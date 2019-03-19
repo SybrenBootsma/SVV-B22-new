@@ -1,13 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-time = np.genfromtxt("matlab/time.csv", dtype="float")
-pitch_rate = np.genfromtxt("matlab/Ahrs1_bPitchRate.csv", dtype="float")
-delta_e = np.genfromtxt("matlab/delta_e.csv", dtype="float")
-alpha = np.genfromtxt("matlab/vane_AOA.csv", dtype="float") #body
-hp = np.genfromtxt("matlab/Dadc1_alt.csv", dtype="float")
-pitch = np.genfromtxt("matlab/Ahrs1_Pitch.csv", dtype="float")
-tat = np.genfromtxt("matlab/Dadc1_tat.csv", dtype="float")
-tas = np.genfromtxt("matlab/Dadc1_tas.csv", dtype="float")
+time = np.genfromtxt("matlab/Ref-data/time.csv", dtype="float")
+pitch_rate = np.genfromtxt("matlab/Ref-data/Ahrs1_bPitchRate.csv", dtype="float")
+delta_e = np.genfromtxt("matlab/Ref-data/delta_e.csv", dtype="float")
+alpha = np.genfromtxt("matlab/Ref-data/vane_AOA.csv", dtype="float") #body
+hp = np.genfromtxt("matlab/Ref-data/Dadc1_alt.csv", dtype="float")
+pitch = np.genfromtxt("matlab/Ref-data/Ahrs1_Pitch.csv", dtype="float")
+tat = np.genfromtxt("matlab/Ref-data/Dadc1_tat.csv", dtype="float")
+tas = np.genfromtxt("matlab/Ref-data/Dadc1_tas.csv", dtype="float")
 
 
 for i in range(len(time)):
@@ -74,10 +74,10 @@ time_p, pitch_rate_p, delta_e_p, alpha_p, pitch_p, u_p = Pheugoid()
 
 
 #plt.subplot(121)
-plt.plot(time_p,pitch_rate_p, label = 'pitch rate')
-plt.plot(time_p,delta_e_p, label = 'delta e')
+#plt.plot(time_p,pitch_rate_p, label = 'pitch rate')
+#plt.plot(time_p,delta_e_p, label = 'delta e')
 #plt.plot(time_p,alpha_p, label = 'alpha')
-plt.legend()
+#plt.legend()
 #
 #plt.subplot(122)
 #plt.plot(time_s,pitch_rate_s, label = 'pitch rate')

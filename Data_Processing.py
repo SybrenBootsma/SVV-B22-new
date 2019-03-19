@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from Velocity_calc import velocity
 from massbalance import massbalance_gewichthajo
 from math import *
-t = np.genfromtxt("matlab/time.csv", dtype="float")
+t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
 
 # Standard values used for calculation
 P0 = 101325 #Pa
@@ -81,7 +81,7 @@ ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T)
 #plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
 #plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)
-print(CLalpha)
+#print(CLalpha)
 
 #Calculation of Cmalpha, Cmdelta (Measurement 2 + CG shift)
 vel2 = velocity(IAS2, hp2, TAT2) #Output: Vc, M, a, Vt, Ve, rho
@@ -116,5 +116,5 @@ def Cmdelta(BEW, Fused, Ve, Deltae, Cl, Tcs, Tc, mass, StickF):
     return Vetilde, Cmdelta, Destar, Stick
 
 Cmdelta1 = Cmdelta(BEW, Fused2, vel2[4], Deltae2, ClCd3[0], Tcs, Tc, mass, StickF2)
-plt.plot(Cmdelta1[0], Cmdelta1[2])  #Ve - Delta eq star plot
-plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
+#plt.plot(Cmdelta1[0], Cmdelta1[2])  #Ve - Delta eq star plot
+#plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
