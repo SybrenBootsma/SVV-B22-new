@@ -4,13 +4,13 @@ import subprocess
 import time
 from Velocity_calc import velocity
 #uncomment for testing
-hp1 = np.array([5010, 5020, 5020, 5030, 5020, 5110]) #Pressure Altitude in ft
-IAS1 = np.array([249, 221, 192, 163, 130, 118]) #Indicated Airspeed in knots
-AOA1 = np.array([1.7, 2.4, 3.6, 5.4, 8.7, 10.6]) #Angle of Attack in deg
-FFL1 = np.array([798, 673, 561, 463, 443, 474]) #Fuel Flow Left in lbs/hr
-FFR1 = np.array([813, 682, 579, 484, 467, 499]) #Fuel Flow Right in lbs/hr
-Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
-TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6, 5.2]) #Total air temperature in Celsius
+#hp1 = np.array([5010, 5020, 5020, 5030, 5020, 5110]) #Pressure Altitude in ft
+#IAS1 = np.array([249, 221, 192, 163, 130, 118]) #Indicated Airspeed in knots
+#AOA1 = np.array([1.7, 2.4, 3.6, 5.4, 8.7, 10.6]) #Angle of Attack in deg
+#FFL1 = np.array([798, 673, 561, 463, 443, 474]) #Fuel Flow Left in lbs/hr
+#FFR1 = np.array([813, 682, 579, 484, 467, 499]) #Fuel Flow Right in lbs/hr
+#Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
+#TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6, 5.2]) #Total air temperature in Celsius
 
 #%% Define function
 
