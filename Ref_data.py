@@ -136,7 +136,8 @@ def Dutch_roll_init():
 
 
 def Dutch_roll():
-    
+    delta_r0 = Dutch_roll_init()[-2]
+    delta_a0 = Dutch_roll_init()[-1]
     for i in range(len(time_ref)):
         if time_ref[i] == 3716.:
             begin_idx = i
@@ -177,7 +178,8 @@ def Dutch_roll_YD_init():
 
 
 def Dutch_roll_YD():
-    
+    delta_r0 = Dutch_roll_YD_init()[-2]
+    delta_a0 = Dutch_roll_YD_init()[-1]
     for i in range(len(time_ref)):
         if time_ref[i] == 3766.:
             begin_idx = i
@@ -221,7 +223,8 @@ def Aperiodic_roll_init():
 
 
 def Aperiodic_roll():
-    
+    delta_r0 = Aperiodic_roll_init()[-2]
+    delta_a0 = Aperiodic_roll_init()[-1]
     for i in range(len(time_ref)):
         if time_ref[i] == 3545.:
             begin_idx = i
@@ -245,7 +248,7 @@ def Aperiodic_roll():
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
     
 def Spiral_init():
- 
+
     for i in range(len(time_ref)):
         if time_ref[i] == 3545.-5.:
             begin_idx = i
@@ -263,6 +266,9 @@ def Spiral_init():
 
 
 def Spiral():
+    
+    delta_r0 = Spiral_init()[-2]
+    delta_a0 = Spiral_init()[-1]
     
     for i in range(len(time_ref)):
         if time_ref[i] == 3900.:
@@ -287,8 +293,8 @@ def Spiral():
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
     
 
-mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Spiral_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral() 
+#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll() 
 
 plt.plot(time,delta_r, label = "Roll input")
 plt.plot(time,delta_a, label = 'Yaw input')
