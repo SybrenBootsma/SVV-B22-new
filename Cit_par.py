@@ -1,9 +1,16 @@
 import numpy as np
-from Ref_data import Pheugoid, Short_period, Pheugoid_init
+from Ref_data import *
 #Citation 550 - Linear simulation
 
+#symmetric
 time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
-hp0, Vt0, alpha0, th0 =Pheugoid_init()
+hp0, Vt0, alpha0, th0 = Pheugoid_init()
+
+#assymetric
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
+#u_a = []
+#u_a.append(delta_a)
+#u_a.append(delta_r)
 
 #data lists of state variables
 
