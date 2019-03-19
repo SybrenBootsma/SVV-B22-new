@@ -111,33 +111,33 @@ t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
 
 #t_a, y_a, xout = forced_response(sys_s,t, u_a, X0=0.)
 #%%
-##plotten symetric 
-#for i in range(len(time)):
-#    y_s[0][i]= y_s[0][i] + Vt0
-#    y_s[1][i]= y_s[1][i] + alpha0
-#    y_s[2][i]= y_s[2][i] + th0
-#
-#plt.subplot(221)
-#plt.plot(time, y_s[0], label = 'u')
-#plt.plot(time, u, label = 'u data')
-#plt.legend()
-#
-#plt.subplot(222)
-#plt.plot(time, y_s[1], label = 'alpha')
-#plt.plot(time, alpha, label = 'alpha data')
-#plt.legend()
-#
-#plt.subplot(223)
-#plt.plot(time, y_s[2], label = 'theta')
-#plt.plot(time, pitch, label = 'theta data')
-#plt.legend()
-#
-#plt.subplot(224)
-#plt.plot(time, y_s[3], label = 'pitch rate')
-#plt.plot(time, pitch_rate, label = 'pitch rate data')
-#plt.legend()
+#plotten symetric 
+for i in range(len(time)):
+    y_s[0][i]= y_s[0][i] + Vt0
+    y_s[1][i]= y_s[1][i] + alpha0
+    y_s[2][i]= y_s[2][i] + th0
+
+plt.subplot(221)
+plt.plot(time, y_s[0], label = 'u')
+plt.plot(time, u, label = 'u data')
+plt.legend()
+
+plt.subplot(222)
+plt.plot(time, y_s[1], label = 'alpha')
+plt.plot(time, alpha, label = 'alpha data')
+plt.legend()
+
+plt.subplot(223)
+plt.plot(time, y_s[2], label = 'theta')
+plt.plot(time, pitch, label = 'theta data')
+plt.legend()
+
+plt.subplot(224)
+plt.plot(time, y_s[3], label = 'pitch rate')
+plt.plot(time, pitch_rate, label = 'pitch rate data')
+plt.legend()
 ##%%
-###plotten assymetric 
+##plotten assymetric 
 #plt.subplot(221)
 #plt.plot(time, y_a[0], label = 'Side slip')
 ##plt.plot(time, u_data, label = 'side slip data')
