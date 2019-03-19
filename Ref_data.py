@@ -24,12 +24,20 @@ yaw_rate_ref = np.genfromtxt("matlab/Ref-data/Ahrs1_bYawRate.csv", dtype="float"
 
 
 
-for i in range(len(time)):
+
+
+for i in range(len(time_ref)):
     
     pitch_rate_ref[i] = np.deg2rad(pitch_rate_ref[i])
     delta_e_ref[i] = np.deg2rad(delta_e_ref[i])
     alpha_ref[i] = np.deg2rad(alpha_ref[i])
     pitch_ref[i] = np.deg2rad(pitch_ref[i])
+    delta_a_ref[i] = np.deg2rad(delta_a_ref[i])
+    delta_r_ref[i] = np.deg2rad(delta_r_ref[i])
+    beta_ref[i] = np.deg2rad(beta_ref[i])
+    roll_ref[i] = np.deg2rad(roll_ref[i])
+    roll_rate_ref[i] = np.deg2rad(roll_rate_ref[i])
+    yaw_rate_ref[i] = np.deg2rad(yaw_rate_ref[i])
 
 def Pheugoid_init():
     
@@ -253,16 +261,16 @@ def Spiral():
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate
 
 
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral() 
-
-plt.plot(time,delta_r, label = "Roll input")
-plt.plot(time,delta_a, label = 'Yaw input')
-plt.plot(time, beta, label = 'Beta')
-plt.plot(time, roll, label = 'roll')
-plt.plot(time, roll_rate, label = 'roll rate')
-plt.plot(time, yaw_rate, label = 'yaw rate')
-plt.legend()
-plt.show()
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral() 
+#
+#plt.plot(time,delta_r, label = "Roll input")
+#plt.plot(time,delta_a, label = 'Yaw input')
+#plt.plot(time, beta, label = 'Beta')
+#plt.plot(time, roll, label = 'roll')
+#plt.plot(time, roll_rate, label = 'roll rate')
+#plt.plot(time, yaw_rate, label = 'yaw rate')
+#plt.legend()
+#plt.show()
 #time_p, pitch_rate_p, delta_e_p, alpha_p, pitch_p, u_p = Pheugoid()
 #time_s, pitch_rate_s, delta_e_s, alpha_s, pitch_s, u_s = Short_period()
 #
