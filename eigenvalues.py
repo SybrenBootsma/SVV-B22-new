@@ -119,10 +119,10 @@ def eigenasym(A, B, C):
     xi = -xi_b/(np.sqrt((xi_b)**2+(eta_b)**2))
     om_0 = np.sqrt((xi_b)**2+(eta_b)**2)*Vt0/b
     
-    print("Eig 1", lam_1)
-    print("Eig 2", lam_2)
-    print("Damping", xi)
-    print("Nat freq", om_0)
+   # print("Eig 1", lam_1)
+    #print("Eig 2", lam_2)
+    #print("Damping", xi)
+    #print("Nat freq", om_0)
     
     return(lam_1, lam_2)
 
@@ -133,11 +133,17 @@ def eigenasym(A, B, C):
 A_x = 4.*mub**2*(KX2*KZ2-KXZ**2)
 B_x = -mub*((Clr+Cnp)*KXZ+Cnr*KX2+Clp*KZ2)
 C_x = 2.*mub*(Clb*KXZ+Cnb*KX2)+0.25*(Clp*Cnr-Cnp*Clr)
-D_X = 0.5*(Clb*Cnp-Cnb*Clp)
+D_x = 0.5*(Clb*Cnp-Cnb*Clp)
+
+#lam_ar = eigenasym(A_ar, B_ar, C_ar)[0]
+lam_ar = -11.1
+#A_dr3 = 1.
+#B_dr3 = B_x/A_x+lam_ar
+#C_dr3 = C_x/A_x +B_x/A_x*lam_ar+lam_ar**2
+
+print(A_x*lam_ar**3+B_x*lam_ar**2+C_x*lam_ar+D_x)
 
 
-
-eigenasym(A_as, B_as, C_as)
 
 
 
