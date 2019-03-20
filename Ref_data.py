@@ -57,14 +57,14 @@ def Pheugoid_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
-    
-    return mass, hp0, Vt0, alpha0, th0
+    delta_e0 = np.mean(delta_e_ref[begin_idx:end_idx])
+    return mass, hp0, Vt0, alpha0, th0, delta_e0
 
-range(len(time_ref))
+
 
 
 def Pheugoid():
-      
+    delta_e0 = Pheigoid_init()[-1]
     #pheugoid 250 sec
     for i in range(len(time_ref)):
         if time_ref[i] == 3220.:
@@ -78,7 +78,9 @@ def Pheugoid():
     alpha = alpha_ref[begin_idx:end_idx]
     pitch = pitch_ref[begin_idx:end_idx]
     u = tas_ref[begin_idx:end_idx]
-    
+    for i in range(len(time)):
+        delta_e[i]= delta_e[i]-delta_e0
+        
     return time, pitch_rate, delta_e, alpha, pitch, u
 
 
@@ -95,12 +97,12 @@ def Short_period_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
-    
-    return mass, hp0, Vt0, alpha0, th0
+    delta_e0 = np.mean(delta_e_ref[begin_idx:end_idx])   
+    return mass, hp0, Vt0, alpha0, th0, delta_e0
 
 
 def Short_period():
-    
+    delta_e0 = Short_period_init()[-1]
     for i in range(len(time_ref)):
         if time_ref[i] == 3630.:
             begin_idx = i
@@ -114,6 +116,9 @@ def Short_period():
     alpha = alpha_ref[begin_idx:end_idx]
     pitch = pitch_ref[begin_idx:end_idx]
     u = tas_ref[begin_idx:end_idx]
+    for i in range(len(time)):
+        delta_e[i]= delta_e[i]-delta_e0
+
     return time, pitch_rate, delta_e, alpha, pitch, u
 
 
@@ -207,9 +212,9 @@ def Dutch_roll_YD():
 def Aperiodic_roll_init():
  
     for i in range(len(time_ref)):
-        if time_ref[i] == 3545.-5.:
+        if time_ref[i] == 3540.-5.:
             begin_idx = i
-        if time_ref[i] == 3545:
+        if time_ref[i] == 3540:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
@@ -226,7 +231,7 @@ def Aperiodic_roll():
     delta_r0 = Aperiodic_roll_init()[-2]
     delta_a0 = Aperiodic_roll_init()[-1]
     for i in range(len(time_ref)):
-        if time_ref[i] == 3545.:
+        if time_ref[i] == 3540.:
             begin_idx = i
         if time_ref[i] == 3580.:
             end_idx = i
@@ -250,9 +255,9 @@ def Aperiodic_roll():
 def Spiral_init():
 
     for i in range(len(time_ref)):
-        if time_ref[i] == 3545.-5.:
+        if time_ref[i] == 3900.:
             begin_idx = i
-        if time_ref[i] == 3545:
+        if time_ref[i] == 3912:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
@@ -293,6 +298,7 @@ def Spiral():
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
     
 
+
 ##mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_init()
 #time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll() 
 #
@@ -304,6 +310,7 @@ def Spiral():
 #plt.plot(time, yaw_rate, label = 'yaw rate')
 #plt.legend()
 #plt.show()
+
 
 
 

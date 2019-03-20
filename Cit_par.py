@@ -3,19 +3,15 @@ from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
-m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_YD_init()
-#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
+m, hp0, Vt0, alpha0, th0 = Short_period_init()
+time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 
 
 #assymetric
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll_YD()
-u_a = []
-#Rudder is wrongly defined, corrected with a minus sign
-for i in range(len(time)):
-    delta_r[i]= -delta_r[i]
-    
-u_a.append(delta_a)
-u_a.append(delta_r)
+#m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Pheugoid_init()
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Pheugoid()
+
+
 
 #data lists of state variables
 
@@ -35,11 +31,16 @@ u_a.append(delta_r)
 # aerodynamic properties
 e      = 0.8         # Oswald factor [ ]
 CD0    = 0.04       # Zero lift drag coefficient [ ]
-CLa    = 5.084        # Slope of CL-alpha curve [ ]
+
+#Updated
+#CLa= np.rad2deg(0.0022911025680788463)
+#Cma = np.rad2deg(-.00042647800866188815)
+#Cmde = np.rad2deg(-0.000917384746620488)
 
 # Longitudinal stability
-Cma    = -0.5626         # longitudinal stabilty [ ]
-Cmde   = -1.1642       # elevator effectiveness [ ]
+CLa    = 5.084       # Slope of CL-alpha curve [ ] 
+Cma    = -0.5626       # longitudinal stabilty [ ]
+Cmde   = -1.1642      # elevator effectiveness [ ]
 
 # Aircraft geometry
 

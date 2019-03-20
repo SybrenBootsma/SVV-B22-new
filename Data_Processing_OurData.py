@@ -21,50 +21,49 @@ g0 = 9.80665 #m/s^2
 lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
-gamma = 1.4 
-
+gamma = 1.4
 
 # Data from Stationary Measurement to calculate Cl, CD
-hp1 = np.array([5010, 5020, 5020, 5030, 5020, 5110]) #Pressure Altitude in ft
-IAS1 = np.array([249, 221, 192, 163, 130, 118]) #Indicated Airspeed in knots
-AOA1 = np.array([1.7, 2.4, 3.6, 5.4, 8.7, 10.6]) #Angle of Attack in deg
-FFL1 = np.array([798, 673, 561, 463, 443, 474]) #Fuel Flow Left in lbs/hr
-FFR1 = np.array([813, 682, 579, 484, 467, 499]) #Fuel Flow Right in lbs/hr
-Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
-TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
+hp1 = np.array([9000, 8990, 9000, 8980, 9000, 8990]) #Pressure Altitude in ft
+IAS1 = np.array([251, 220, 193, 159, 133, 115]) #Indicated Airspeed in knots
+AOA1 = np.array([1.2, 2, 2.9, 5, 7.6, 10.5]) #Angle of Attack in deg
+FFL1 = np.array([776, 652, 605, 445, 429, 428]) #Fuel Flow Left in lbs/hr
+FFR1 = np.array([826, 673, 635, 487, 467, 467]) #Fuel Flow Right in lbs/hr
+Fused1 = np.array([372, 411, 439, 466, 484, 503]) #Fuel used in lbs
+TAT1 = np.array([6.2, 3.6, 2, 0.5, -0.8, -1.2]) #Total air temperature in Celsius
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
-hp2 = np.array([6060, 6350, 6550, 6880, 6160, 5810, 5310]) #Pressure Altitude in ft
-IAS2 = np.array([161, 150, 140, 130, 173, 179, 192]) #Indicated Airspeed in knots
-AOA2 = np.array([5.3, 6.3, 7.3, 8.5, 4.5, 4.1, 3.4]) #Angle of Attack in deg
-Deltae2 = np.array([0, -0.4, -0.9, -1.5, 0.4, 0.6, 1]) #Elevator Deflection in deg
-Deltaetr2 = np.array([2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8]) #Elevator trim tab Deflection in deg
-StickF2 = np.array([0, -23, -29, -46, 26, 40, 83]) #Stick Force in Newton
-FFL2 = np.array([462, 458, 454, 449, 465, 472, 482]) #Fuel Flow Left in lbs/hr
-FFR2 = np.array([486, 482, 477, 473, 489, 496, 505]) #Fuel Flow Right in lbs/hr
-Fused2 = np.array([664, 694, 730, 755, 798, 825, 846]) #Fuel used in lbs
-TAT2 = np.array([5.5, 4.5, 3.5, 2.5, 5.0, 6.2, 8.2]) #Total air temperature in Celsius
+hp2 = np.array([7980, 8300, 8560, 7980, 7510]) #Pressure Altitude in ft
+IAS2 = np.array([160, 150, 140, 171, 181]) #Indicated Airspeed in knots
+AOA2 = np.array([4.8, 5.6, 6.7, 4.1, 3.5]) #Angle of Attack in deg
+Deltae2 = np.array([-0.4, -0.8, -1.3, 0.1, 0.4]) #Elevator Deflection in deg
+Deltaetr2 = np.array([2.1, 2.1, 2.1, 2.1, 2.1]) #Elevator trim tab Deflection in deg
+StickF2 = np.array([1, -13, -26, 19, 40]) #Stick Force in Newton
+FFL2 = np.array([426, 421, 413, 425, 433]) #Fuel Flow Left in lbs/hr
+FFR2 = np.array([475, 470, 462, 475, 484]) #Fuel Flow Right in lbs/hr
+Fused2 = np.array([558, 592, 610, 630, 652]) #Fuel used in lbs
+TAT2 = np.array([1.5, 0.5, 0.2, 2.5, 3.8]) #Total air temperature in Celsius
 
 
 # Data from shift in Center of Gravity
-hp3 = np.array([5730, 5790]) #Pressure Altitude in ft
-IAS3 = np.array([161, 161]) #Indicated Airspeed in knots
-AOA3 = np.array([5.3, 5.3]) #Angle of Attack in deg
-Deltae3 = np.array([0, -0.5]) #Elevator Deflection in deg
-Deltatr3 = np.array([2.8, 2.8]) #Elevator trim tab Deflection in deg
-StickF3 = np.array([0, -30]) #Stick Force in Newton
-FFL3 = np.array([471, 468]) #Fuel Flow Left in lbs/hr
-FFR3 = np.array([493, 490]) #Fuel Flow Right in lbs/hr
-Fused3 = np.array([881, 910]) #Fuel used in lbs
-TAT3 = np.array([5.0, 5.0]) #Total air temperature in Celsius
+hp3 = np.array([7790, 7830]) #Pressure Altitude in ft
+IAS3 = np.array([162, 162]) #Indicated Airspeed in knots
+AOA3 = np.array([4.7, 4.7]) #Angle of Attack in deg
+Deltae3 = np.array([-0.3, -0.8]) #Elevator Deflection in deg
+Deltatr3 = np.array([2.3, 2.3]) #Elevator trim tab Deflection in deg
+StickF3 = np.array([1, -25]) #Stick Force in Newton
+FFL3 = np.array([426, 425]) #Fuel Flow Left in lbs/hr
+FFR3 = np.array([477, 475]) #Fuel Flow Right in lbs/hr
+Fused3 = np.array([674, 702]) #Fuel used in lbs
+TAT3 = np.array([2.2, 2.5]) #Total air temperature in Celsius
 
 
 # Calculation of Cl and Cd, plot Cl-alpha, Cd-alpha, Cl-Cd graphs (Measurement 1)
 def Cl_Cd(BEW, Fused, Vt, rho, S, T):
     
-    Mfuel = 4050 #lbs
-    Mperson = 695 #kg
+    Mfuel = 2600 #lbs
+    Mperson = 799 #kg
     
     Mtotal = BEW*0.453592 + Mfuel*0.453592 + Mperson - Fused*0.453592 #Total mass in kg
     W = Mtotal*9.80665     #Weight in Newton
@@ -106,8 +105,8 @@ mass = massbalance_gewichthajo(t)
 def Cmdelta(BEW, Fused, Ve, Deltae, Cl, Tcs, Tc, mass, StickF):
     
     Ws = 60500   #Newton
-    Mfuel = 4050 #lbs
-    Mperson = 695 #kg
+    Mfuel = 2600 #lbs
+    Mperson = 799 #kg
     Mtotal = BEW*0.453592 + Mfuel*0.453592 + Mperson - Fused*0.453592 #Total mass in kg
     W = Mtotal*9.80665     #Weight in Newton
     
