@@ -34,6 +34,7 @@ TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsi
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
 print(TAT1)
 TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
+print(TAT1)
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
 hp2 = np.array([6060, 6350, 6550, 6880, 6160, 5810, 5310]) #Pressure Altitude in ft
