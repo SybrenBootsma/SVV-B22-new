@@ -12,6 +12,7 @@ import numpy as np
 time = np.genfromtxt("matlab/test-data/time.csv", dtype="float")
 pitch_rate = np.genfromtxt("matlab/test-data/Ahrs1_bPitchRate.csv", dtype="float")
 roll_rate = np.genfromtxt("matlab/test-data/Ahrs1_bRollRate.csv", dtype="float")
+yaw_rate = np.genfromtxt("matlab/test-data/Ahrs1_bYawRate.csv", dtype="float")
 delta_e = np.genfromtxt("matlab/test-data/delta_e.csv", dtype="float")
 alpha = np.genfromtxt("matlab/test-data/vane_AOA.csv", dtype="float") #body
 hp = np.genfromtxt("matlab/test-data/Dadc1_alt.csv", dtype="float")
@@ -50,15 +51,14 @@ plt.subplot(121)
 plt.plot(time_p,alpha_p, label = 'Angle of attack')
 plt.title("Phugoid")
 plt.xlabel("t [sec]")
-
-plt.legend()
-
+plt.grid(True)
 
 plt.subplot(122)
 plt.plot(time_p,tas_p)
 plt.title("Phugoid Velocity")
 plt.ylabel("True Airspeed [m/s]")
 plt.xlabel("t [sec]")
+plt.grid(True)
 
 """Short Period"""
 #short period 10 sec
@@ -80,7 +80,7 @@ plt.subplot(121)
 #plt.plot(time_sp,pitch_rate_sp, label = 'Pitch rate')
 #plt.plot(time_sp,delta_e_sp, label = 'Elevator deflection')
 plt.plot(time_sp,alpha_sp, label = 'Angle of attack')
-plt.legend()
+plt.grid(True)
 plt.title("Short Period")
 plt.xlabel("t [sec]")
 
@@ -89,7 +89,7 @@ plt.plot(time_sp,tas_sp)
 plt.title("Short Period Velocity")
 plt.ylabel("True Airspeed [m/s]")
 plt.xlabel("t [sec]")
-
+plt.grid(True)
 
 """ Dutch roll """
 #Dutch roll without damping
@@ -101,40 +101,47 @@ for i in range(len(time)):
 
 #Dutch roll lists
 time_d = time[begin_d:end_d]
-pitch_rate_d = pitch_rate[begin_d:end_d]
-delta_e_d = delta_e[begin_d:end_d]
-alpha_d = alpha[begin_d:end_d]
+yaw_rate_d = yaw_rate[begin_d:end_d]
+roll_rate_d = roll_rate[begin_d:end_d]
 
 
 #Dutch roll with damping
 for i in range(len(time)):
     if time[i] == (46*60+7):
         begin_dd = i
-    elif time[i] == (46*60+7+12):
+    elif time[i] == (46*60+7+15):
         end_dd = i
 
 #Dutch roll damping lists
 time_dd = time[begin_dd:end_dd]
-pitch_rate_dd = pitch_rate[begin_dd:end_dd]
-delta_e_dd = delta_e[begin_dd:end_dd]
-alpha_dd = alpha[begin_dd:end_dd]
+yaw_rate_dd = yaw_rate[begin_dd:end_dd]
+roll_rate_dd = roll_rate[begin_dd:end_dd]
 
 plt.figure(3, figsize=(13,5))
 plt.subplot(121)
-plt.plot(time_d,pitch_rate_d, label = 'Pitch rate')
-plt.plot(time_d,delta_e_d, label = 'Elevator deflection')
-plt.plot(time_d,alpha_d, label = 'Angle of attack')
-plt.legend()
-plt.title("Dutch roll")
+plt.plot(time_d,roll_rate_d, label = 'Roll rate')
+plt.title("Dutch roll, roll rate")
 plt.xlabel("t [sec]")
+plt.grid(True)
 
 plt.subplot(122)
-plt.plot(time_dd,pitch_rate_dd, label = 'Pitch rate')
-plt.plot(time_dd,delta_e_dd, label = 'Elevator deflection')
-plt.plot(time_dd,alpha_dd, label = 'Angle of attack')
-plt.legend()
-plt.title("Dutch roll damped")
+plt.plot(time_d,yaw_rate_d, label = 'Yaw rate')
+plt.title("Dutch roll, yaw rate")
 plt.xlabel("t [sec]")
+plt.grid(True)
+
+plt.figure(4, figsize=(13,5))
+plt.subplot(121)
+plt.plot(time_dd,roll_rate_dd, label = 'Roll rate')
+plt.title("Dutch roll damped, roll rate")
+plt.xlabel("t [sec]")
+plt.grid(True)
+
+plt.subplot(122)
+plt.plot(time_dd,yaw_rate_dd, label = 'Yaw rate')
+plt.title("Dutch roll damped, yaw rate")
+plt.xlabel("t [sec]")
+plt.grid(True)
 
 
 """ Aperiodic roll """
@@ -147,19 +154,17 @@ for i in range(len(time)):
 
 #Aperiodic roll lists
 time_a = time[begin_a:end_a]
-pitch_rate_a = pitch_rate[begin_a:end_a]
-delta_e_a = delta_e[begin_a:end_a]
-alpha_a = alpha[begin_a:end_a]
 roll_rate_a = roll_rate[begin_a:end_a]
 roll_a = roll[begin_a:end_a]
 
-plt.figure(4, figsize=(13,5))
+plt.figure(5, figsize=(13,5))
 plt.subplot(121)
 plt.plot(time_a,roll_rate_a, label = 'Roll rate [deg/s]')
 plt.plot(time_a,roll_a, label = 'Roll angle')
 plt.legend()
 plt.title("Aperiodic roll")
 plt.xlabel("t [sec]")
+plt.grid(True)
 plt.ylabel("[deg]")
 
 """ Spiral """
@@ -172,9 +177,6 @@ for i in range(len(time)):
 
 #Spiral lists
 time_s = time[begin_s:end_s]
-pitch_rate_s = pitch_rate[begin_s:end_s]
-delta_e_s = delta_e[begin_s:end_s]
-alpha_s = alpha[begin_s:end_s]
 roll_rate_s = roll_rate[begin_s:end_s]
 roll_s = roll[begin_s:end_s]
 
@@ -185,4 +187,5 @@ plt.legend()
 plt.title("Spiral")
 plt.xlabel("t [sec]")
 plt.ylabel("[deg]")
+plt.grid(True)
 plt.show
