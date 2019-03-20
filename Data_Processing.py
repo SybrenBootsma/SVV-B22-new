@@ -21,6 +21,7 @@ g0 = 9.80665 #m/s^2
 lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
+gamma = 1.4 
 
 
 # Data from Stationary Measurement to calculate Cl, CD
@@ -30,7 +31,7 @@ AOA1 = np.array([1.7, 2.4, 3.6, 5.4, 8.7, 10.6]) #Angle of Attack in deg
 FFL1 = np.array([798, 673, 561, 463, 443, 474]) #Fuel Flow Left in lbs/hr
 FFR1 = np.array([813, 682, 579, 484, 467, 499]) #Fuel Flow Right in lbs/hr
 Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
-TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6, 5.2]) #Total air temperature in Celsius
+TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
