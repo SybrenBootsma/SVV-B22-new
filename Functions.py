@@ -36,12 +36,13 @@ def thrust(hp,IAS,TAT,FFr,FFl): #hp in feet, TAT in Kelvin, FFr/l in lbs/hr
     hplist = [i * 0.3048 for i in hplist] #convert feet to meters
     
     #Mach number
-    Mlist = velocity(IAS, hp, TAT)[1]
+    TATlist = TAT
+    Mlist = velocity(IAS, hp, TATlist)[1]
     
     #Deltatemp use Kelvin for this part!
-    TATlist = TAT
-    for i in range(len(TATlist)):
-        TATlist[i] = TATlist[i] + 273.15 #convert Celsius to Kelvin
+    
+    #for i in range(len(TATlist)):
+    #    TATlist[i] = TATlist[i] + 273.15 #convert Celsius to Kelvin
     
     TISAlist = []
     for i in range(len(hplist)):
