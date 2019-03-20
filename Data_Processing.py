@@ -6,10 +6,9 @@ Created on Tue Mar 12 15:01:51 2019
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from Velocity_calc import velocity
+from Functions import velocity, thrust
 from massbalance import massbalance_gewichthajo
 from math import *
-from thrust_calc import thrust
 t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
 
 # Standard values used for calculation
