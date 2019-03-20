@@ -3,8 +3,8 @@ from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
-m, hp0, Vt0, alpha0, th0 = Pheugoid_init()
-time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
+m, hp0, Vt0, alpha0, th0 = Short_period_init()
+time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 
 
 #assymetric
