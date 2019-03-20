@@ -293,17 +293,17 @@ def Spiral():
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
     
 
-#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll() 
-
-plt.plot(time,delta_r, label = "Roll input")
-plt.plot(time,delta_a, label = 'Yaw input')
-plt.plot(time, beta, label = 'Beta')
-plt.plot(time, roll, label = 'roll')
-plt.plot(time, roll_rate, label = 'roll rate')
-plt.plot(time, yaw_rate, label = 'yaw rate')
-plt.legend()
-plt.show()
+##mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_init()
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll() 
+#
+#plt.plot(time,delta_r, label = "Roll input")
+#plt.plot(time,delta_a, label = 'Yaw input')
+#plt.plot(time, beta, label = 'Beta')
+#plt.plot(time, roll, label = 'roll')
+#plt.plot(time, roll_rate, label = 'roll rate')
+#plt.plot(time, yaw_rate, label = 'yaw rate')
+#plt.legend()
+#plt.show()
 
 
 
