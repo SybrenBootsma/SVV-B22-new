@@ -57,14 +57,14 @@ def Pheugoid_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
-    
-    return mass, hp0, Vt0, alpha0, th0
+    delta_e0 = np.mean(delta_e_ref[begin_idx:end_idx])
+    return mass, hp0, Vt0, alpha0, th0, delta_e0
 
-range(len(time_ref))
+
 
 
 def Pheugoid():
-      
+    delta_e0 = Pheigoid_init()[-1]
     #pheugoid 250 sec
     for i in range(len(time_ref)):
         if time_ref[i] == 3220.:
@@ -78,7 +78,9 @@ def Pheugoid():
     alpha = alpha_ref[begin_idx:end_idx]
     pitch = pitch_ref[begin_idx:end_idx]
     u = tas_ref[begin_idx:end_idx]
-    
+    for i in range(len(time)):
+        delta_e[i]= delta_e[i]-delta_e0
+        
     return time, pitch_rate, delta_e, alpha, pitch, u
 
 
@@ -95,12 +97,12 @@ def Short_period_init():
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
-    
-    return mass, hp0, Vt0, alpha0, th0
+    delta_e0 = np.mean(delta_e_ref[begin_idx:end_idx])   
+    return mass, hp0, Vt0, alpha0, th0, delta_e0
 
 
 def Short_period():
-    
+    delta_e0 = Short_period_init()[-1]
     for i in range(len(time_ref)):
         if time_ref[i] == 3630.:
             begin_idx = i
@@ -114,6 +116,9 @@ def Short_period():
     alpha = alpha_ref[begin_idx:end_idx]
     pitch = pitch_ref[begin_idx:end_idx]
     u = tas_ref[begin_idx:end_idx]
+    for i in range(len(time)):
+        delta_e[i]= delta_e[i]-delta_e0
+
     return time, pitch_rate, delta_e, alpha, pitch, u
 
 
@@ -250,9 +255,9 @@ def Aperiodic_roll():
 def Spiral_init():
 
     for i in range(len(time_ref)):
-        if time_ref[i] == 3903.-5.:
+        if time_ref[i] == 3900.:
             begin_idx = i
-        if time_ref[i] == 3903:
+        if time_ref[i] == 3912:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
