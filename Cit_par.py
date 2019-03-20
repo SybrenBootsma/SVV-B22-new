@@ -10,6 +10,7 @@ m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_YD_init()
 #assymetric
 time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll_YD()
 u_a = []
+#Rudder is wrongly defined, corrected with a minus sign
 for i in range(len(time)):
     delta_r[i]= -delta_r[i]
     
