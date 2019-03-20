@@ -33,6 +33,8 @@ Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
 TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
 print(TAT1)
+TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
+
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
 hp2 = np.array([6060, 6350, 6550, 6880, 6160, 5810, 5310]) #Pressure Altitude in ft
 IAS2 = np.array([161, 150, 140, 130, 173, 179, 192]) #Indicated Airspeed in knots
@@ -93,10 +95,12 @@ print('CL Alpha is ', CLalpha)
 
 #Calculation of Cmalpha, Cmdelta (Measurement 2 + CG shift)
 T2 = thrust(hp2, IAS2, TAT2, FFR2, FFL2) #Tp,Tps,Tc,Tcs
+TAT2 = np.array([5.5, 4.5, 3.5, 2.5, 5.0, 6.2, 8.2]) #Total air temperature in Celsius
 vel2 = velocity(IAS2, hp2, TAT2) #Output: Vc, M, a, Vt, Ve, rho
 ClCd2 = Cl_Cd(BEW, Fused2, vel2[3], vel2[5], S, T2[0]) #Output: Cl, Cd
 
 T3 = thrust(hp3, IAS3, TAT3, FFR3, FFL3) #Tp,Tps,Tc,Tcs
+TAT3 = np.array([5.0, 5.0]) #Total air temperature in Celsius
 vel3 = velocity(IAS3, hp3, TAT3) #Output: Vc, M, a, Vt, Ve, rho
 ClCd3 = Cl_Cd(BEW, Fused3, vel3[3], vel3[5], S, T3[0]) #Output: Cl, Cd
 
