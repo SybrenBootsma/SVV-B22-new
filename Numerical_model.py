@@ -109,10 +109,10 @@ t_a, y_a, xouta = ctr.forced_response(sys_a,time, u_a, X0=0)
 #t_a, y_a = step_response(sys_a,t, X0 = 0., input=1) 
 #plotten symetric 
 
-for i in range(len(time)):
-    y_s[0][i]= y_s[0][i] + Vt0
-    y_s[1][i]= y_s[1][i] + alpha0
-    y_s[2][i]= y_s[2][i] + th0
+#for i in range(len(time)):
+#    y_s[0][i]= y_s[0][i] + Vt0
+#    y_s[1][i]= y_s[1][i] + alpha0
+#    y_s[2][i]= y_s[2][i] + th0
     
 
 
