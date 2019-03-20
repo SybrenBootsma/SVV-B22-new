@@ -26,4 +26,10 @@ def velocity(V_IAS,hp,Tm):
     Vt = M*a
     rho = rho0 * (T/T0)**(-(g0/(lapse*R) + 1))
     Ve = Vt * np.sqrt(rho/rho0)
-    return Vc, M, a, Vt, Ve, rho
+    return Vc, M, T, a, Vt, Ve, rho
+
+#hp1 = np.array([5010, 5020, 5020, 5030, 5020, 5110]) #Pressure Altitude in ft
+#IAS1 = np.array([249, 221, 192, 163, 130, 118]) #Indicated Airspeed in knots
+#TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6, 5.2]) #Total air temperature in Celsius
+#
+#v = velocity(IAS1,hp1,TAT1)
