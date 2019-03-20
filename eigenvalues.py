@@ -137,7 +137,7 @@ D_X = 0.5*(Clb*Cnp-Cnb*Clp)
 
 eigenasym(A_as,B_as,C_as)
 
-
+eigenasym(A_as, B_as, C_as)
 
 
 
