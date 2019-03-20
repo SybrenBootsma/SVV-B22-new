@@ -21,7 +21,7 @@ g0 = 9.80665 #m/s^2
 lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
-
+gamma = 1.4
 
 # Data from Stationary Measurement to calculate Cl, CD
 hp1 = np.array([9000, 8990, 9000, 8980, 9000, 8990]) #Pressure Altitude in ft
