@@ -207,9 +207,9 @@ def Dutch_roll_YD():
 def Aperiodic_roll_init():
  
     for i in range(len(time_ref)):
-        if time_ref[i] == 3545.-5.:
+        if time_ref[i] == 3540.-5.:
             begin_idx = i
-        if time_ref[i] == 3545:
+        if time_ref[i] == 3540:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
@@ -226,7 +226,7 @@ def Aperiodic_roll():
     delta_r0 = Aperiodic_roll_init()[-2]
     delta_a0 = Aperiodic_roll_init()[-1]
     for i in range(len(time_ref)):
-        if time_ref[i] == 3545.:
+        if time_ref[i] == 3540.:
             begin_idx = i
         if time_ref[i] == 3580.:
             end_idx = i
@@ -250,9 +250,9 @@ def Aperiodic_roll():
 def Spiral_init():
 
     for i in range(len(time_ref)):
-        if time_ref[i] == 3545.-5.:
+        if time_ref[i] == 3903.-5.:
             begin_idx = i
-        if time_ref[i] == 3545:
+        if time_ref[i] == 3903:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
@@ -294,14 +294,14 @@ def Spiral():
     
 
 #mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Dutch_roll_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll() 
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral() 
 
 plt.plot(time,delta_r, label = "Roll input")
 plt.plot(time,delta_a, label = 'Yaw input')
-plt.plot(time, beta, label = 'Beta')
+#plt.plot(time, beta, label = 'Beta')
 plt.plot(time, roll, label = 'roll')
-plt.plot(time, roll_rate, label = 'roll rate')
-plt.plot(time, yaw_rate, label = 'yaw rate')
+#plt.plot(time, roll_rate, label = 'roll rate')
+#plt.plot(time, yaw_rate, label = 'yaw rate')
 plt.legend()
 plt.show()
 
