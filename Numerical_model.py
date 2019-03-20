@@ -66,123 +66,65 @@ D_a = np.array([[0,0],
 sys_s = ctr.ss(A_s, B_s, C_s, D_s)
 sys_a = ctr.ss(A_a, B_a, C_a, D_a)
 
-
-
-#for i in range(len(delta_e_p)):
-#    delta_e_p[i] = np.deg2rad(delta_e_p[i])
- #   pitch_rate_p[i] = np.deg2rad(pitch_rate_p[i])
-
+def Symetric_plot():
+    t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
+    damp_s = ctr.damp(sys_s)
+    for i in range(len(time)):
+        y_s[0][i]= y_s[0][i] + Vt0
+        y_s[1][i]= y_s[1][i] + alpha0
+        y_s[2][i]= y_s[2][i] + th0
     
-
-#u_s = []
-#
-#for i in range(len(t)):
-#    if t[i] < 3.:
-#        u_s.append(0.015)
-#    else: 
-#        u_s.append(0.)
-#
-# 
-#u_a = []
-#
-#for i in range(len(t)):
-#    if t[i] < 0.1:
-#        u_a.append(0.025/dt)
-#    else: 
-#        u_a.append(0.)    
-#
-#
-#print (u_s, shape(u_s)) 
-
-#t_s, y_s = ctr.impulse_response(sys_s,t, X0 = 0.) 
-
-#t_a, y_a = impulse_response(sys_a,t, X0 = 0.0, input = 1)
-
-
-#t_s, y_s, xout = forced_response(sys_s,t, u_s, X0=0.)
-
-
-t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
-#t_a, y_a, xouta = ctr.forced_response(sys_a,time, u_a, X0=0)
-
-#t_s, y_s = step_response(sys_s,t, X0 = 0.) 
-#t_a, y_a = step_response(sys_a,t, X0 = 0., input=1) 
-#plotten symetric 
-
-for i in range(len(time)):
-    y_s[0][i]= y_s[0][i] + Vt0
-    y_s[1][i]= y_s[1][i] + alpha0
-    y_s[2][i]= y_s[2][i] + th0
+    plt.subplot(221)
+    plt.plot(time, y_s[0], label = 'u')
+    plt.plot(time, u, label = 'u data')
+    plt.legend()
     
+    plt.subplot(222)
+    plt.plot(time, y_s[1], label = 'alpha')
+    plt.plot(time, alpha, label = 'alpha data')
+    plt.legend()
+    
+    plt.subplot(223)
+    plt.plot(time, y_s[2], label = 'theta')
+    plt.plot(time, pitch, label = 'theta data')
+    plt.legend()
+    
+    plt.subplot(224)
+    plt.plot(time, y_s[3], label = 'pitch rate')
+    plt.plot(time, pitch_rate, label = 'pitch rate data')
+    plt.legend()
+    plt.show()
+    
+    
+def Assymatric_plot():
+    u_a = []
+    #Rudder is wrongly defined, corrected with a minus sign
+    for i in range(len(time)):
+        delta_r[i]= -delta_r[i]    
+    t_a, y_a, xout = forced_response(sys_s,t, u_a, X0=0.)
+    damp_a = ctr.damp(sys_a)
+    
+    plt.subplot(221)
+    plt.plot(time, y_a[0], label = 'Side slip')
+    #plt.plot(time, u_data, label = 'side slip data')
+    plt.legend()
+    
+    plt.subplot(222)
+    plt.plot(time, y_a[1], label = 'Roll ')
+    plt.plot(time, roll, label = 'Roll data')
+    plt.legend()
+    
+    plt.subplot(223)
+    plt.plot(time, y_a[2], label = 'Roll rate')
+    plt.plot(time, roll_rate , label = 'Roll rate data')
+    plt.legend()
+    
+    plt.subplot(224)
+    plt.plot(time, y_a[3], label = 'Yaw rate')
+    plt.plot(time, yaw_rate, label = 'Yaw rate data')
+    plt.legend()
+    plt.show()
 
 
-#t_a, y_a, xout = forced_response(sys_s,t, u_a, X0=0.)
-#%%
+Symetric_plot()
 
-plt.subplot(221)
-plt.plot(time, y_s[0], label = 'u')
-plt.plot(time, u, label = 'u data')
-plt.legend()
-
-plt.subplot(222)
-plt.plot(time, y_s[1], label = 'alpha')
-plt.plot(time, alpha, label = 'alpha data')
-plt.legend()
-
-plt.subplot(223)
-plt.plot(time, y_s[2], label = 'theta')
-plt.plot(time, pitch, label = 'theta data')
-plt.legend()
-
-plt.subplot(224)
-plt.plot(time, y_s[3], label = 'pitch rate')
-plt.plot(time, pitch_rate, label = 'pitch rate data')
-plt.legend()
-##%%
-##plotten assymetric 
-#plt.subplot(221)
-#plt.plot(time, y_a[0], label = 'Side slip')
-##plt.plot(time, u_data, label = 'side slip data')
-#plt.legend()
-#
-#plt.subplot(222)
-#plt.plot(time, y_a[1], label = 'Roll ')
-#plt.plot(time, roll, label = 'Roll data')
-#plt.legend()
-#
-#plt.subplot(223)
-#plt.plot(time, y_a[2], label = 'Roll rate')
-#plt.plot(time, roll_rate , label = 'Roll rate data')
-#plt.legend()
-#
-#plt.subplot(224)
-#plt.plot(time, y_a[3], label = 'Yaw rate')
-#plt.plot(time, yaw_rate, label = 'Yaw rate data')
-#plt.legend()
-
-
-
-
-
-
-
-
-
-damp_s = ctr.damp(sys_s)
-#damp_a = ctr.damp(sys_a)
-
-
-
-
-#plt.subplot(221)
-#plt.plot(t_a, y_a[0])
-#
-#plt.subplot(222)
-#plt.plot(t_a, y_a[1])
-#
-#plt.subplot(223)
-#plt.plot(t_a, y_a[2])
-#
-#plt.subplot(224)
-#plt.plot(t_a, y_a[3])
-#plt.show()

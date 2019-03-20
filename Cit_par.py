@@ -11,13 +11,7 @@ time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 #m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Pheugoid_init()
 #time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Pheugoid()
 
-#u_a = []
-#Rudder is wrongly defined, corrected with a minus sign
-#for i in range(len(time)):
-#    delta_r[i]= -delta_r[i]
-    
-#u_a.append(delta_a)
-#u_a.append(delta_r)
+
 
 #data lists of state variables
 
