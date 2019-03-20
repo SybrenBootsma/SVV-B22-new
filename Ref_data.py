@@ -64,7 +64,7 @@ def Pheugoid_init():
 
 
 def Pheugoid():
-    delta_e0 = Pheigoid_init()[-1]
+    delta_e0 = Pheugoid_init()[-1]
     #pheugoid 250 sec
     for i in range(len(time_ref)):
         if time_ref[i] == 3220.:

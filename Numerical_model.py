@@ -66,7 +66,7 @@ D_a = np.array([[0,0],
 sys_s = ctr.ss(A_s, B_s, C_s, D_s)
 sys_a = ctr.ss(A_a, B_a, C_a, D_a)
 
-def Symetric_plot():
+def Symmetric_plot():
     t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
     damp_s = ctr.damp(sys_s)
     for i in range(len(time)):
@@ -96,12 +96,16 @@ def Symetric_plot():
     plt.show()
     
     
-def Assymatric_plot():
+def Asymmetric_plot():
     u_a = []
     #Rudder is wrongly defined, corrected with a minus sign
     for i in range(len(time)):
-        delta_r[i]= -delta_r[i]    
-    t_a, y_a, xout = forced_response(sys_s,t, u_a, X0=0.)
+        delta_r[i]= -delta_r[i]   
+        
+    u_a.append(delta_a)
+    u_a.append(delta_r)
+    
+    t_a, y_a, xout = ctr.forced_response(sys_a,time, u_a, X0=0.)
     damp_a = ctr.damp(sys_a)
     
     plt.subplot(221)
@@ -126,5 +130,6 @@ def Assymatric_plot():
     plt.show()
 
 
-Symetric_plot()
+Asymmetric_plot()
+
 

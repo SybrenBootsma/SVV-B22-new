@@ -3,13 +3,13 @@ from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
-m, hp0, Vt0, alpha0, th0 = Short_period_init()
-time, pitch_rate, u_s, alpha, pitch, u = Short_period()
+#m, hp0, Vt0, alpha0, th0, delta_e0 = Aperiodic_roll_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Aperiodic_roll()
 
 
 #assymetric
-#m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Pheugoid_init()
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Pheugoid()
+m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Aperiodic_roll_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
 
 
 
