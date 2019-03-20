@@ -250,9 +250,9 @@ def Aperiodic_roll():
 def Spiral_init():
 
     for i in range(len(time_ref)):
-        if time_ref[i] == 3903.-5.:
+        if time_ref[i] == 3900.:
             begin_idx = i
-        if time_ref[i] == 3903:
+        if time_ref[i] == 3912:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
