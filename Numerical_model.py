@@ -99,8 +99,8 @@ def Symmetric_plot():
 def Asymmetric_plot():
     u_a = []
     #Rudder is wrongly defined, corrected with a minus sign
-    #for i in range(len(time)):
-    #    delta_r[i]= -delta_r[i]   
+    for i in range(len(time)):
+        delta_r[i]= -delta_r[i]   
         
     u_a.append(delta_a)
     u_a.append(delta_r)
