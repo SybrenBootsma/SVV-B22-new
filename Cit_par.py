@@ -1,15 +1,15 @@
 import numpy as np
-from Ref_data import *
+from Test_data_outputs import *
 #Citation 550 - Linear simulation
 
 #symmetric
-#m, hp0, Vt0, alpha0, th0, delta_e0 = Aperiodic_roll_init()
-#time, pitch_rate, u_s, alpha, pitch, u = Aperiodic_roll()
+#m, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
 
 
 #assymetric
-m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Spiral_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
+m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Aperiodic_roll_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
 
 
 
@@ -33,14 +33,14 @@ e      = 0.8         # Oswald factor [ ]
 CD0    = 0.04       # Zero lift drag coefficient [ ]
 
 #Updated
-#CLa= np.rad2deg(0.0022911025680788463)
-#Cma = np.rad2deg(-.00042647800866188815)
-#Cmde = np.rad2deg(-0.000917384746620488)
+CLa= np.rad2deg(0.08654461339642183)
+Cma = np.rad2deg(-0.01632838447633989)
+Cmde = np.rad2deg(-0.03406932679756723)
 
 # Longitudinal stability
-CLa    = 5.084       # Slope of CL-alpha curve [ ] 
-Cma    = -0.5626       # longitudinal stabilty [ ]
-Cmde   = -1.1642      # elevator effectiveness [ ]
+#CLa    = 5.084       # Slope of CL-alpha curve [ ] 
+#Cma    = -0.5626       # longitudinal stabilty [ ]
+#Cmde   = -1.1642      # elevator effectiveness [ ]
 
 # Aircraft geometry
 
