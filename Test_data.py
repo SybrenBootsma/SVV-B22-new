@@ -8,7 +8,6 @@ Created on Fri Mar 15 10:41:49 2019
 import matplotlib.pyplot as plt
 import math
 import numpy as np
-from scipy.integrate import simps
 
 time = np.genfromtxt("matlab/test-data/time.csv", dtype="float")
 pitch_rate = np.genfromtxt("matlab/test-data/Ahrs1_bPitchRate.csv", dtype="float")
