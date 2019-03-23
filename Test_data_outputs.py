@@ -48,7 +48,7 @@ for i in range(len(time_ref)):
 def Pheugoid_init():
     
     for i in range(len(time_ref)):
-        if time_ref[i] == 2490.-5.:
+        if time_ref[i] == 2487.:
             begin_idx = i
         if time_ref[i] == 2490.:
             end_idx = i
@@ -69,7 +69,7 @@ def Pheugoid():
     #print (delta_e0)
     #pheugoid 250 sec
     for i in range(len(time_ref)):
-        if time_ref[i] == 2490.:
+        if time_ref[i] == 2480.:
             begin_idx = i
         if time_ref[i] == 2630.:
             end_idx = i
@@ -128,9 +128,9 @@ def Short_period():
 def Dutch_roll_init():
  
     for i in range(len(time_ref)):
-        if time_ref[i] == 2712.-5.:
-            begin_idx = i
         if time_ref[i] == 2712.:
+            begin_idx = i
+        if time_ref[i] == 2712.5:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
@@ -138,7 +138,7 @@ def Dutch_roll_init():
     alpha0 = np.mean(alpha_ref[begin_idx:end_idx])
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
     delta_r0 = np.mean(delta_r_ref[begin_idx:end_idx])
-    delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])
+    delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])-0.001
     roll0 = np.mean(roll_ref[begin_idx:end_idx])
     roll_rate0 = np.mean(roll_rate_ref[begin_idx:end_idx])
     yaw_rate0 = np.mean(yaw_rate_ref[begin_idx:end_idx])
@@ -151,9 +151,9 @@ def Dutch_roll():
     #print (delta_r0)
     delta_a0 = Dutch_roll_init()[6]
     for i in range(len(time_ref)):
-        if time_ref[i] == 2712.:
+        if time_ref[i] == 2713.:
             begin_idx = i
-        if time_ref[i] == 2737.:
+        if time_ref[i] == 2728.:
             end_idx = i
     
     #shortperiod lists
@@ -232,9 +232,9 @@ def Dutch_roll_YD():
 def Aperiodic_roll_init():
  
     for i in range(len(time_ref)):
-        if time_ref[i] == 2380.-5.:
+        if time_ref[i] == 2384.-5.:
             begin_idx = i
-        if time_ref[i] == 2380:
+        if time_ref[i] == 2384:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
