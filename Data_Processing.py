@@ -34,9 +34,8 @@ FFR1 = np.array([813, 682, 579, 484, 467, 499]) #Fuel Flow Right in lbs/hr
 Fused1 = np.array([360, 412, 447, 478, 532, 570]) #Fuel used in lbs
 TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
-print(TAT1)
 TAT1 = np.array([12.5, 10.5, 8.8, 7.2, 6., 5.2]) #Total air temperature in Celsius
-print(TAT1)
+
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
 hp2 = np.array([6060, 6350, 6550, 6880, 6160, 5810, 5310]) #Pressure Altitude in ft

@@ -32,9 +32,8 @@ FFR1 = np.array([826, 673, 635, 487, 467, 467]) #Fuel Flow Right in lbs/hr
 Fused1 = np.array([372, 411, 439, 466, 484, 503]) #Fuel used in lbs
 TAT1 = np.array([6.2, 3.6, 2, 0.5, -0.8, -1.2]) #Total air temperature in Celsius
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
-print(TAT1)
 TAT1 = np.array([6.2, 3.6, 2, 0.5, -0.8, -1.2]) #Total air temperature in Celsius
-print(TAT1)
+
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
 hp2 = np.array([7980, 8300, 8560, 7980, 7510]) #Pressure Altitude in ft
@@ -93,6 +92,10 @@ plt.ylabel('Cl')
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)[0]
 print('CL Alpha is ', CLalpha)
+
+Update = np.polyfit(ClCd1[0]**2, ClCd1[1], 1)
+print('Cd0 is', Update[1])
+print('e is', 1/(Update[0]*pi*A))
 
 #Calculation of Cmalpha, Cmdelta (Measurement 2 + CG shift)
 T2 = thrust(hp2, IAS2, TAT2, FFR2, FFL2) #Tp,Tps,Tc,Tcs
