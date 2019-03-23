@@ -1,4 +1,4 @@
-from Cit_par import*
+from Cit_par import *
 import control as ctr
 import numpy as np
 import matplotlib.pyplot as plt
@@ -101,7 +101,11 @@ def Asymmetric_plot():
 #    Rudder is wrongly defined, corrected with a minus sign
     for i in range(len(time)):
         delta_r[i]= -delta_r[i]   
-        delta_a[i]= -delta_a[i]
+        delta_a[i]= delta_a[i]
+        roll[i] = roll[i]-roll0
+        roll_rate[i] = roll_rate[i]-roll_rate0
+        yaw_rate[i] = yaw_rate[i] - yaw_rate0
+        
     u_a.append(delta_a)
     u_a.append(delta_r)
     
