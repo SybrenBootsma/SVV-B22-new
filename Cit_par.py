@@ -1,5 +1,5 @@
 import numpy as np
-from Test_data_outputs import *
+from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
@@ -8,8 +8,8 @@ from Test_data_outputs import *
 
 
 #assymetric
-m, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 = Aperiodic_roll_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0, roll0, roll_rate0, yaw_rate0= Spiral_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
 
 
 
@@ -26,16 +26,22 @@ time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
 #time = time_p
 
 # Aircraft mass
-#m      =   ma          # mass [kg]
+m = mass         # mass [kg]
 
 # aerodynamic properties
 e      = 0.8         # Oswald factor [ ]
 CD0    = 0.04       # Zero lift drag coefficient [ ]
 
-#Updated
-CLa= np.rad2deg(0.08654461339642183)
-Cma = np.rad2deg(-0.01632838447633989)
-Cmde = np.rad2deg(-0.03406932679756723)
+#Updated (ref)
+#CLa= np.rad2deg(0.08654461339642183)
+#Cma = np.rad2deg(-0.01632838447633989)
+#Cmde = np.rad2deg(-0.03406932679756723)
+
+#Updates (own flight data)
+CLa= np.rad2deg(0.0798823703555718)
+Cma = np.rad2deg(-0.01651692485918628)
+Cmde = np.rad2deg(-0.030594666080702045)
+
 
 # Longitudinal stability
 #CLa    = 5.084       # Slope of CL-alpha curve [ ] 
