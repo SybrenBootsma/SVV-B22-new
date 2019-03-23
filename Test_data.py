@@ -103,7 +103,12 @@ for i in range(len(time)):
 time_d = time[begin_d:end_d]
 yaw_rate_d = yaw_rate[begin_d:end_d]
 roll_rate_d = roll_rate[begin_d:end_d]
-
+roll_d = roll[begin_d:end_d-1]
+yaw_integration = []
+yaw_pos = 0
+for i in (range(len(time_d)-1)):
+    yaw_pos = yaw_pos + (yaw_rate_d[i]*(time_d[i + 1]-time_d[i]))
+    yaw_integration.append(yaw_pos) 
 
 #Dutch roll with damping
 for i in range(len(time)):
@@ -118,16 +123,23 @@ yaw_rate_dd = yaw_rate[begin_dd:end_dd]
 roll_rate_dd = roll_rate[begin_dd:end_dd]
 
 plt.figure(3, figsize=(13,5))
-plt.subplot(121)
+plt.subplot(131)
 plt.plot(time_d,roll_rate_d, label = 'Roll rate')
 plt.title("Dutch roll, roll rate")
 plt.xlabel("t [sec]")
 plt.grid(True)
 
-plt.subplot(122)
+plt.subplot(132)
 plt.plot(time_d,yaw_rate_d, label = 'Yaw rate')
 plt.title("Dutch roll, yaw rate")
 plt.xlabel("t [sec]")
+plt.grid(True)
+
+plt.subplot(133)
+plt.plot(yaw_integration,roll_d)
+plt.title("Dutch roll, yaw vs roll")
+plt.xlabel("Relative yaw angle [deg]")
+plt.ylabel("Roll angle [deg]")
 plt.grid(True)
 
 plt.figure(4, figsize=(13,5))

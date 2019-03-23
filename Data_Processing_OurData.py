@@ -6,10 +6,9 @@ Created on Tue Mar 12 15:01:51 2019
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from Velocity_calc import velocity
+from Functions import velocity, thrust
 from massbalance import massbalance_gewichthajo
 from math import *
-from thrust_calc import thrust
 t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
 
 # Standard values used for calculation
@@ -23,6 +22,7 @@ S = 30.0 #m^2
 BEW = 9165.0 #lbs
 gamma = 1.4
 
+
 # Data from Stationary Measurement to calculate Cl, CD
 hp1 = np.array([9000, 8990, 9000, 8980, 9000, 8990]) #Pressure Altitude in ft
 IAS1 = np.array([251, 220, 193, 159, 133, 115]) #Indicated Airspeed in knots
@@ -32,6 +32,8 @@ FFR1 = np.array([826, 673, 635, 487, 467, 467]) #Fuel Flow Right in lbs/hr
 Fused1 = np.array([372, 411, 439, 466, 484, 503]) #Fuel used in lbs
 TAT1 = np.array([6.2, 3.6, 2, 0.5, -0.8, -1.2]) #Total air temperature in Celsius
 T1 = thrust(hp1, IAS1, TAT1, FFR1, FFL1) #Tp,Tps,Tc,Tcs
+TAT1 = np.array([6.2, 3.6, 2, 0.5, -0.8, -1.2]) #Total air temperature in Celsius
+
 
 # Data from Stationary Measurement to calculate Cmalpha, Cmdelta
 hp2 = np.array([7980, 8300, 8560, 7980, 7510]) #Pressure Altitude in ft
@@ -91,12 +93,18 @@ plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)[0]
 print('CL Alpha is ', CLalpha)
 
+Update = np.polyfit(ClCd1[0]**2, ClCd1[1], 1)
+print('Cd0 is', Update[1])
+print('e is', 1/(Update[0]*pi*A))
+
 #Calculation of Cmalpha, Cmdelta (Measurement 2 + CG shift)
 T2 = thrust(hp2, IAS2, TAT2, FFR2, FFL2) #Tp,Tps,Tc,Tcs
+TAT2 = np.array([1.5, 0.5, 0.2, 2.5, 3.8]) #Total air temperature in Celsius
 vel2 = velocity(IAS2, hp2, TAT2) #Output: Vc, M, a, Vt, Ve, rho
 ClCd2 = Cl_Cd(BEW, Fused2, vel2[3], vel2[5], S, T2[0]) #Output: Cl, Cd
 
 T3 = thrust(hp3, IAS3, TAT3, FFR3, FFL3) #Tp,Tps,Tc,Tcs
+TAT3 = np.array([2.2, 2.5]) #Total air temperature in Celsius
 vel3 = velocity(IAS3, hp3, TAT3) #Output: Vc, M, a, Vt, Ve, rho
 ClCd3 = Cl_Cd(BEW, Fused3, vel3[3], vel3[5], S, T3[0]) #Output: Cl, Cd
 

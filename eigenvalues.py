@@ -126,21 +126,21 @@ def eigenasym(A, B, C):
     
     return(lam_1, lam_2)
 
-#------------------------------------------------------------------------------
-
-# Dutch roll and aperiodic roll
-
-A_x = 4.*mub**2*(KX2*KZ2-KXZ**2)
-B_x = -mub*((Clr+Cnp)*KXZ+Cnr*KX2+Clp*KZ2)
-C_x = 2.*mub*(Clb*KXZ+Cnb*KX2)+0.25*(Clp*Cnr-Cnp*Clr)
-D_X = 0.5*(Clb*Cnp-Cnb*Clp)
-
-eigenasym(A_as,B_as,C_as)
-
-eigenasym(A_as, B_as, C_as)
-
-
-
+##------------------------------------------------------------------------------
+#
+## Dutch roll and aperiodic roll
+#
+#A_x = 4.*mub**2*(KX2*KZ2-KXZ**2)
+#B_x = -mub*((Clr+Cnp)*KXZ+Cnr*KX2+Clp*KZ2)
+#C_x = 2.*mub*(Clb*KXZ+Cnb*KX2)+0.25*(Clp*Cnr-Cnp*Clr)
+#D_X = 0.5*(Clb*Cnp-Cnb*Clp)
+#
+#eigenasym(A_as,B_as,C_as)
+#
+#eigenasym(A_as, B_as, C_as)
+#
+#
+#
 
 
 
