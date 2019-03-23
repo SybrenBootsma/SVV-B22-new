@@ -27,7 +27,7 @@ left_FU = np.genfromtxt("matlab/Test-data/lh_engine_FU.csv", dtype="float")
 right_FU = np.genfromtxt("matlab/Test-data/rh_engine_FU.csv", dtype="float")
 
 mass_ref = []                       
-mass_init = 6689
+mass_init = 6136
 for i in range(len(time_ref)):
     mass_ref.append(5000-left_FU[i]*0.453592- right_FU[i]*0.453592)
 
