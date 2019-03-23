@@ -61,8 +61,8 @@ def massbalance(t):
         W.append(Wi*lbskg*g0)
     return (xcg, W)
 
-#plt.plot(t, massbalance(t)[0])
-#plt.show()
+plt.plot(t, massbalance(t)[1])
+plt.show()
 
 def massbalance_gewichthajo(t):
     #import time table
