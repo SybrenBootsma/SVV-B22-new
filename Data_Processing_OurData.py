@@ -6,10 +6,9 @@ Created on Tue Mar 12 15:01:51 2019
 """
 import numpy as np
 import matplotlib.pyplot as plt
-from Velocity_calc import velocity
+from Functions import velocity, thrust
 from massbalance import massbalance_gewichthajo
 from math import *
-from thrust_calc import thrust
 t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
 
 # Standard values used for calculation
@@ -22,6 +21,7 @@ lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
 gamma = 1.4
+
 
 # Data from Stationary Measurement to calculate Cl, CD
 hp1 = np.array([9000, 8990, 9000, 8980, 9000, 8990]) #Pressure Altitude in ft

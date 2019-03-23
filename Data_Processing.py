@@ -21,6 +21,8 @@ lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
 gamma = 1.4 
+b = 15.911	#m
+A = b**2/S
 
 
 # Data from Stationary Measurement to calculate Cl, CD
@@ -93,6 +95,10 @@ plt.ylabel('Cl')
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)[0]
 print('CL Alpha is ', CLalpha)
+
+Update = np.polyfit(ClCd1[0]**2, ClCd1[1], 1)
+print('Cd0 is', Update[1])
+print('e is', 1/(Update[0]*pi*A)) 
 
 #Calculation of Cmalpha, Cmdelta (Measurement 2 + CG shift)
 T2 = thrust(hp2, IAS2, TAT2, FFR2, FFL2) #Tp,Tps,Tc,Tcs
