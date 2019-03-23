@@ -1,4 +1,4 @@
-from Cit_par import *
+from Cit_par_Our_data import *
 import control as ctr
 import numpy as np
 import matplotlib.pyplot as plt
@@ -67,6 +67,8 @@ sys_s = ctr.ss(A_s, B_s, C_s, D_s)
 sys_a = ctr.ss(A_a, B_a, C_a, D_a)
 
 def Symmetric_plot():
+#    for i in range(len(time)):
+#        u_s[i]= u_s[i]/2
     t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
     damp_s = ctr.damp(sys_s)
     for i in range(len(time)):
@@ -80,17 +82,17 @@ def Symmetric_plot():
     plt.legend()
     
     plt.subplot(222)
-    plt.plot(time, y_s[1], label = 'alpha')
+    plt.plot(time, y_s[1], label = 'alpha num')
     plt.plot(time, alpha, label = 'alpha data')
     plt.legend()
     
     plt.subplot(223)
-    plt.plot(time, y_s[2], label = 'theta')
+    plt.plot(time, y_s[2], label = 'theta num')
     plt.plot(time, pitch, label = 'theta data')
     plt.legend()
     
     plt.subplot(224)
-    plt.plot(time, y_s[3], label = 'pitch rate')
+    plt.plot(time, y_s[3], label = 'pitch rate num')
     plt.plot(time, pitch_rate, label = 'pitch rate data')
     plt.legend()
     plt.show()
@@ -100,11 +102,11 @@ def Asymmetric_plot():
     u_a = []
 #    Rudder is wrongly defined, corrected with a minus sign
     for i in range(len(time)):
-        delta_r[i]= -delta_r[i]   
-        delta_a[i]= delta_a[i]
-        roll[i] = roll[i]-roll0
-        roll_rate[i] = roll_rate[i]-roll_rate0
-        yaw_rate[i] = yaw_rate[i] - yaw_rate0
+        delta_r[i]= -delta_r[i] 
+        delta_a[i]= -delta_a[i]
+#        roll[i] = roll[i]-roll0
+#        roll_rate[i] = roll_rate[i]-roll_rate0
+#        yaw_rate[i] = yaw_rate[i] - yaw_rate0
         
     u_a.append(delta_a)
     u_a.append(delta_r)
@@ -118,22 +120,22 @@ def Asymmetric_plot():
     plt.legend()
     
     plt.subplot(222)
-    plt.plot(time, y_a[1], label = 'Roll ')
+    plt.plot(time, y_a[1], label = 'Roll num')
     plt.plot(time, roll, label = 'Roll data')
     plt.legend()
     
     plt.subplot(223)
-    plt.plot(time, y_a[2], label = 'Roll rate')
+    plt.plot(time, y_a[2], label = 'Roll rate num')
     plt.plot(time, roll_rate , label = 'Roll rate data')
     plt.legend()
     
     plt.subplot(224)
-    plt.plot(time, y_a[3], label = 'Yaw rate')
+    plt.plot(time, y_a[3], label = 'Yaw rate num')
     plt.plot(time, yaw_rate, label = 'Yaw rate data')
     plt.legend()
     plt.show()
 
 
-Symmetric_plot()
+Asymmetric_plot()
 
 
