@@ -21,6 +21,8 @@ lapse = -0.0065 #degC/m
 S = 30.0 #m^2
 BEW = 9165.0 #lbs
 gamma = 1.4
+b = 15.911	#m
+A = b**2/S
 
 
 # Data from Stationary Measurement to calculate Cl, CD
