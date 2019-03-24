@@ -1,15 +1,18 @@
 import numpy as np
-from Ref_data import *
+from Test_data_outputs import *
 #Citation 550 - Linear simulation
 
 #symmetric
-mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
-time, pitch_rate, u_s, alpha, pitch, u = Short_period()
+#mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
 
-# ,roll0, roll_rate0, yaw_rate0
+#mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Short_period()
+## 
 #assymetric
-#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0= Spiral_init()
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
+
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Aperiodic_roll_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
 
 
 
@@ -29,8 +32,8 @@ time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 m = mass         # mass [kg]
 
 # aerodynamic properties
-e      = 0.8         # Oswald factor [ ]
-CD0    = 0.04       # Zero lift drag coefficient [ ]
+#e      = 0.8         # Oswald factor [ ]
+#CD0    = 0.04       # Zero lift drag coefficient [ ]
 
 #Updated (ref)
 #CLa= np.rad2deg(0.08654461339642183)
@@ -40,15 +43,21 @@ CD0    = 0.04       # Zero lift drag coefficient [ ]
 #CD0 =
 
 #Updates (own flight data)
-#CLa= np.rad2deg(0.0798823703555718)
-#Cma = np.rad2deg(-0.01651692485918628)
-#Cmde = np.rad2deg(-0.030594666080702045)
+CLa= np.rad2deg(0.0798823703555718) #lower
+Cma = np.rad2deg(-0.013491768165584162) #lower
+Cmde = np.rad2deg(-0.024993703453834035)*0.6 #lower
+
+
+e =  0.7164777033104905 
+CD0 = 0.024915931667482297
 
 
 # Longitudinal stability
-CLa    = 5.084       # Slope of CL-alpha curve [ ] 
-Cma    = -0.5626       # longitudinal stabilty [ ]
-Cmde   = -1.1642      # elevator effectiveness [ ]
+#CLa    = 5.084       # Slope of CL-alpha curve [ ] 
+#Cma    = -0.5626       # longitudinal stabilty [ ]
+#Cmde   = -1.1642      # elevator effectiveness [ ]
+#e      = 0.8         # Oswald factor [ ]
+#CD0    = 0.04       # Zero lift drag coefficient [ ]
 
 # Aircraft geometry
 
@@ -103,14 +112,16 @@ CD = CD0 + (CLa * alpha0) ** 2 / (np.pi * A * e) # Drag coefficient [ ]
 # Stabiblity derivatives
 
 CX0    = W * np.sin(th0) / (0.5 * rho * Vt0 ** 2 * S)
-CXu    = -0.02792
-CXa    = -0.47966
+CXu    = -0.02792*0.8
+CXa    = -0.47966*0.8
 CXadot = +0.08330
+#CXq    = -0.28170
 CXq    = -0.28170
 CXde   = -0.03728
 
 CZ0    = -W * np.cos(th0) / (0.5 * rho * Vt0 ** 2 * S)
 CZu    = -0.37616
+#CZu    = -0.27616
 CZa    = -5.74340
 CZadot = -0.00350
 CZq    = -5.66290
@@ -121,20 +132,20 @@ Cmu    = +0.06990
 Cmadot = +0.17800
 Cmq    = -8.79415
 
-CYb    = -0.7500
+CYb    = -0.7500 #minor influence
 CYbdot =  0     
-CYp    = -0.0304
-CYr    = +0.8495
-CYda   = -0.0400
-CYdr   = +0.2300
+CYp    = -0.0304 #no influence
+CYr    = +0.8495 #no influence
+CYda   = -0.0400 #no influence
+CYdr   = +0.2300 #minor influence
 
-Clb    = -0.10260
-Clp    = -0.71085
+Clb    = -0.10260*1
+Clp    = -0.71085*2
 Clr    = +0.23760
 Clda   = -0.23088
 Cldr   = +0.03440
 
-Cnb    =  +0.1348
+Cnb    =  +0.1348*2
 Cnbdot =   0     
 Cnp    =  -0.0602
 Cnr    =  -0.2061

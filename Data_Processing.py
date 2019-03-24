@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from Functions import velocity, thrust
 from massbalance import massbalance_gewichthajo
 from math import *
-t = np.genfromtxt("matlab/Test-data/time.csv", dtype="float")
+t = np.genfromtxt("matlab/Ref-data/time.csv", dtype="float")
 
 # Standard values used for calculation
 P0 = 101325 #Pa
