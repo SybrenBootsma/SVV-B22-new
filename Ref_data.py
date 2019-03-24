@@ -30,7 +30,7 @@ mass_ref = []
 mass_init = 6689
 for i in range(len(time_ref)):
     mass_ref.append(5000-left_FU[i]*0.453592- right_FU[i]*0.453592)
-
+print (delta_e_ref[32000])
 
 for i in range(len(time_ref)):
     
@@ -45,6 +45,7 @@ for i in range(len(time_ref)):
     roll_rate_ref[i] = np.deg2rad(roll_rate_ref[i])
     yaw_rate_ref[i] = np.deg2rad(yaw_rate_ref[i])
 
+print(delta_e_ref[32000])
 def Pheugoid_init():
     
     for i in range(len(time_ref)):
@@ -64,7 +65,7 @@ def Pheugoid_init():
 
 
 def Pheugoid():
-    delta_e0 = Pheugoid_init()[-1]
+    delta_e0 = Pheugoid_init()[5]
     #pheugoid 250 sec
     for i in range(len(time_ref)):
         if time_ref[i] == 3200.: #3223
@@ -72,17 +73,18 @@ def Pheugoid():
         if time_ref[i] == 3457.:
             end_idx = i
     #pheugoid lists
+
     time = time_ref[begin_idx:end_idx]
     pitch_rate = pitch_rate_ref[begin_idx:end_idx]
     delta_e = delta_e_ref[begin_idx:end_idx]
     alpha = alpha_ref[begin_idx:end_idx]
     pitch = pitch_ref[begin_idx:end_idx]
     u = tas_ref[begin_idx:end_idx]
+    delta_e_new = []
     for i in range(len(time)):
-        delta_e[i]= delta_e[i]-delta_e0
+        delta_e_new.append(delta_e[i]-delta_e0)
         
-    return time, pitch_rate, delta_e, alpha, pitch, u
-
+    return time, pitch_rate, delta_e_new, alpha, pitch, u
 
 
 def Short_period_init():
@@ -125,9 +127,9 @@ def Short_period():
 def Dutch_roll_init():
  
     for i in range(len(time_ref)):
-        if time_ref[i] == 3716.-5.:
+        if time_ref[i] == 3717.-1.:
             begin_idx = i
-        if time_ref[i] == 3716:
+        if time_ref[i] == 3717:
             end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
@@ -146,7 +148,7 @@ def Dutch_roll():
     for i in range(len(time_ref)):
         if time_ref[i] == 3716.:
             begin_idx = i
-        if time_ref[i] == 3757.:
+        if time_ref[i] == 3735.:
             end_idx = i
     
     #shortperiod lists
@@ -278,7 +280,7 @@ def Spiral():
     for i in range(len(time_ref)):
         if time_ref[i] == 3900.:
             begin_idx = i
-        if time_ref[i] == 4200.:
+        if time_ref[i] == 4100.:
             end_idx = i
     
     #shortperiod lists
@@ -292,7 +294,7 @@ def Spiral():
     yaw_rate = yaw_rate_ref[begin_idx:end_idx]
     for i in range(len(time)):
         delta_r[i] = delta_r[i]-delta_r0
-        delta_a[i] = delta_a[i]-delta_a0
+        delta_a[i] = delta_a[i]-delta_a0-0.00025
     
 
     return time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate    
