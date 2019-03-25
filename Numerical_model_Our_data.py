@@ -75,10 +75,13 @@ def Symmetric_plot():
         y_s[0][i]= y_s[0][i] + Vt0
         y_s[1][i]= y_s[1][i] + alpha0
         y_s[2][i]= y_s[2][i] + th0
-    
+
     plt.subplot(221)
     plt.plot(time, y_s[0], label = 'u')
     plt.plot(time, u, label = 'u data')
+    plt.xlabel("Time (s)")
+    plt.ylabel('y')
+    plt.grid()
     plt.legend()
     
     plt.subplot(222)
@@ -102,11 +105,11 @@ def Asymmetric_plot():
     u_a = []
 #    Rudder is wrongly defined, corrected with a minus sign
     for i in range(len(time)):
-        delta_r[i]= -delta_r[i] 
+        delta_r[i]= -delta_r[i]
         delta_a[i]= -delta_a[i]
-#        roll[i] = roll[i]-roll0
-#        roll_rate[i] = roll_rate[i]-roll_rate0
-#        yaw_rate[i] = yaw_rate[i] - yaw_rate0
+        roll[i] = roll[i]-roll0
+        roll_rate[i] = roll_rate[i]-roll_rate0
+        yaw_rate[i] = yaw_rate[i] - yaw_rate0
         
     u_a.append(delta_a)
     u_a.append(delta_r)
@@ -115,23 +118,42 @@ def Asymmetric_plot():
     damp_a = ctr.damp(sys_a)
     
     plt.subplot(221)
-    plt.plot(time, y_a[0], label = 'Side slip')
+    plt.title("Side Slip")
+    plt.plot(time, y_a[0], label = 'Side slip numerical model')
+#    plt.plot(time,delta_r)
+#    plt.plot(time,delta_a)
+    plt.xlabel("Time (s)")
+    plt.ylabel('Side slip angle (rad)')
+    plt.grid()
+    
     #plt.plot(time, u_data, label = 'side slip data')
     plt.legend()
     
     plt.subplot(222)
-    plt.plot(time, y_a[1], label = 'Roll num')
+    plt.title("Roll")
+    plt.plot(time, y_a[1], label = 'Roll numerical model')
     plt.plot(time, roll, label = 'Roll data')
+    plt.xlabel("Time (s)")
+    plt.ylabel('Roll angle (rad)')
+    plt.grid()
     plt.legend()
     
     plt.subplot(223)
-    plt.plot(time, y_a[2], label = 'Roll rate num')
+    plt.title("Roll rate")
+    plt.plot(time, y_a[2], label = 'Roll rate numerical model')
     plt.plot(time, roll_rate , label = 'Roll rate data')
+    plt.xlabel("Time (s)")
+    plt.ylabel('Roll rate (rad/s)')
+    plt.grid()
     plt.legend()
     
     plt.subplot(224)
-    plt.plot(time, y_a[3], label = 'Yaw rate num')
+    plt.title("Yaw rate")
+    plt.plot(time, y_a[3], label = 'Yaw rate numerical model')
     plt.plot(time, yaw_rate, label = 'Yaw rate data')
+    plt.xlabel("Time (s)")
+    plt.ylabel("Yaw rate (rad/s)")
+    plt.grid()
     plt.legend()
     plt.show()
 
