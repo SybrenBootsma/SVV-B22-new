@@ -4,12 +4,12 @@ from Ref_data import *
 
 #symmetric
 
-#mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
-#time, pitch_rate, u_s, alpha, pitch, u = Short_period()
+#mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
 # ,roll0, roll_rate0, yaw_rate0
 #assymetric
-mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0= Dutch_roll_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0= Spiral_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
 
 
 
@@ -121,20 +121,20 @@ Cmq    = -8.79415
 
 CYb    = -0.7500 
 CYbdot =  0     
-CYp    = -0.0304 
-CYr    = +0.8495 
+CYp    = -0.0304#*2 
+CYr    = +0.8495#*2
 CYda   = -0.0400
 CYdr   = +0.2300
 
 Clb    = -0.10260#*3
-Clp    = -0.71085*0.7 #accurate spiral
+Clp    = -0.71085*2 #accurate spiral
 Clr    = +0.23760#*2
 Clda   = -0.23088
 Cldr   = +0.03440
 
-Cnb    =  +0.1348
+Cnb    =  +0.1348*0.5 #dytch_roll
 Cnbdot =   0     
-Cnp    =  -0.0602
-Cnr    =  -0.2061
-Cnda   =  -0.0120
-Cndr   =  -0.0939
+Cnp    =  -0.0602#*0.5
+Cnr    =  -0.2061*2
+Cnda   =  -0.0120#*2
+Cndr   =  -0.0939#*2
