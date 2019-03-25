@@ -3,19 +3,19 @@ from Test_data_outputs import *
 #Citation 550 - Linear simulation
 
 #symmetric
-#mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
-#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
+mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
+time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
 
 #mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
 #time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 ## 
 #assymetric
 
-mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Spiral_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
+#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Spiral_init()
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
 
-#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Aperiodic_roll_init()
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
+#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Dutch_roll_YD_init()
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll_YD()
 
 
 
@@ -115,17 +115,17 @@ CD = CD0 + (CLa * alpha0) ** 2 / (np.pi * A * e) # Drag coefficient [ ]
 # Stabiblity derivatives
 
 CX0    = W * np.sin(th0) / (0.5 * rho * Vt0 ** 2 * S)
-CXu    = -0.02792*0.8
-CXa    = -0.47966*0.8
+CXu    = -0.02792#*0.8
+CXa    = -0.47966#*0.8
 CXadot = +0.08330
 #CXq    = -0.28170
-CXq    = -0.28170
-CXde   = -0.03728
+CXq    = -0.28170#*2
+CXde   = -0.03728#*2
 
 CZ0    = -W * np.cos(th0) / (0.5 * rho * Vt0 ** 2 * S)
-CZu    = -0.37616
+CZu    = -0.37616#*2
 #CZu    = -0.27616
-CZa    = -5.74340
+CZa    = -5.74340*0.75
 CZadot = -0.00350
 CZq    = -5.66290
 CZde   = -0.69612
