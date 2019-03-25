@@ -190,7 +190,7 @@ def Dutch_roll_YD():
     for i in range(len(time_ref)):
         if time_ref[i] == 3766.:
             begin_idx = i
-        if time_ref[i] == 3796.:
+        if time_ref[i] == 3780.:
             end_idx = i
     
     #shortperiod lists
