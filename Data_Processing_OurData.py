@@ -143,7 +143,5 @@ plt.figure(5)
 plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
 print('CM Delta is ', Cmdelta1[1])
 
-plt.figure(6)
-plt.plot(AOA2, Cmdelta1[2])
 Cmalpha = np.polyfit(AOA2, Cmdelta1[2], 1)[0] * -Cmdelta1[1]
 print('CM Alpha is ', Cmalpha)
