@@ -140,7 +140,7 @@ def eigenasym(A, B, C):
 #eigenasym(A_as, B_as, C_as)
 #
 #
-#
+#eigensym(A_)
 
 
 

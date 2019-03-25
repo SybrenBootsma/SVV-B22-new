@@ -3,13 +3,13 @@ from Ref_data import *
 #Citation 550 - Linear simulation
 
 #symmetric
-mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
-time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 
+#mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
 # ,roll0, roll_rate0, yaw_rate0
 #assymetric
-#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0= Spiral_init()
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0= Spiral_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
 
 
 
@@ -28,27 +28,25 @@ time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 # Aircraft mass
 m = mass         # mass [kg]
 
-# aerodynamic properties
-e      = 0.8         # Oswald factor [ ]
-CD0    = 0.04       # Zero lift drag coefficient [ ]
+
 
 #Updated (ref)
-#CLa= np.rad2deg(0.08654461339642183)
-#Cma = np.rad2deg(-0.01632838447633989)
-#Cmde = np.rad2deg(-0.03406932679756723)
-#e = 
-#CD0 =
-
-#Updates (own flight data)
-#CLa= np.rad2deg(0.0798823703555718)
-#Cma = np.rad2deg(-0.01651692485918628)
-#Cmde = np.rad2deg(-0.030594666080702045)
+CLa= np.rad2deg(0.08654461339642183)
+Cma = np.rad2deg(-0.013336605579293026)
+Cmde = np.rad2deg(-0.02783225836176922)*0.60
+e = 0.7666029593693898
+CD0 = 0.02132818658199389
 
 
-# Longitudinal stability
-CLa    = 5.084       # Slope of CL-alpha curve [ ] 
-Cma    = -0.5626       # longitudinal stabilty [ ]
-Cmde   = -1.1642      # elevator effectiveness [ ]
+
+#
+## Longitudinal stability
+#CLa    = 5.084       # Slope of CL-alpha curve [ ] 
+#Cma    = -0.5626       # longitudinal stabilty [ ]
+#Cmde   = -1.1642      # elevator effectiveness [ ]
+## aerodynamic properties
+#e      = 0.8         # Oswald factor [ ]
+#CD0    = 0.04       # Zero lift drag coefficient [ ]
 
 # Aircraft geometry
 
@@ -97,46 +95,46 @@ depsda = 4 / (A + 2)            # Downwash gradient [ ]
 
 # Lift and drag coefficient
 
-CL = 2 * W / (rho * Vt0 ** 2 * S)              # Lift coefficient [ ]
-CD = CD0 + (CLa * alpha0) ** 2 / (np.pi * A * e) # Drag coefficient [ ]
+CL = 2 * W / (rho * Vt0 ** 2 * S)                        # Lift coefficient [ ]
+CD = CD0 + (CLa * alpha0) ** 2 / (np.pi * A * e)         # Drag coefficient [ ]
 
 # Stabiblity derivatives
 
 CX0    = W * np.sin(th0) / (0.5 * rho * Vt0 ** 2 * S)
-CXu    = -0.02792
-CXa    = -0.47966
-CXadot = +0.08330
-CXq    = -0.28170
+CXu    = -0.02792*0.8 # damp
+CXa    = -0.47966*0.8 #damp
+CXadot = +0.08330#*0.8#nothing
+CXq    = -0.28170#*0.8 #nothing
 CXde   = -0.03728
 
-CZ0    = -W * np.cos(th0) / (0.5 * rho * Vt0 ** 2 * S)
-CZu    = -0.37616
-CZa    = -5.74340
-CZadot = -0.00350
-CZq    = -5.66290
-CZde   = -0.69612
+CZ0    = -W * np.cos(th0) / (0.5 * rho * Vt0 ** 2 * S)#*0.7
+CZu    = -0.37616#*0.5 long motion
+CZa    = -5.74340#*0.8 #good one short 
+CZadot = -0.00350#*0.5
+CZq    = -5.66290#*0.5
+CZde   = -0.69612#*0.5 #nothing 
 
 Cm0    = +0.0297 #added from C.2
-Cmu    = +0.06990
+Cmu    = +0.06990#*0.5
 Cmadot = +0.17800
 Cmq    = -8.79415
 
-CYb    = -0.7500
+CYb    = -0.7500 
 CYbdot =  0     
-CYp    = -0.0304
-CYr    = +0.8495
+CYp    = -0.0304#*2 
+CYr    = +0.8495#*2
 CYda   = -0.0400
 CYdr   = +0.2300
 
-Clb    = -0.10260
-Clp    = -0.71085
-Clr    = +0.23760
+Clb    = -0.10260#*3
+Clp    = -0.71085*2 #accurate spiral
+Clr    = +0.23760#*2
 Clda   = -0.23088
 Cldr   = +0.03440
 
-Cnb    =  +0.1348
+Cnb    =  +0.1348*0.5 #dytch_roll
 Cnbdot =   0     
-Cnp    =  -0.0602
-Cnr    =  -0.2061
-Cnda   =  -0.0120
-Cndr   =  -0.0939
+Cnp    =  -0.0602#*0.5
+Cnr    =  -0.2061*2
+Cnda   =  -0.0120#*2
+Cndr   =  -0.0939#*2

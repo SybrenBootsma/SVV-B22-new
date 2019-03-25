@@ -67,6 +67,8 @@ sys_s = ctr.ss(A_s, B_s, C_s, D_s)
 sys_a = ctr.ss(A_a, B_a, C_a, D_a)
 
 def Symmetric_plot():
+    #for i in range(len(time)):
+    #    u_s[i]  =u_s[i]*0.5
     t_s, y_s, xouts = ctr.forced_response(sys_s,time, u_s, X0=0)
     damp_s = ctr.damp(sys_s)
     for i in range(len(time)):
@@ -102,9 +104,9 @@ def Asymmetric_plot():
     for i in range(len(time)):
         delta_r[i]= -delta_r[i]   
         delta_a[i]= delta_a[i]
-        roll[i] = roll[i]-roll0
-        roll_rate[i] = roll_rate[i]-roll_rate0
-        yaw_rate[i] = yaw_rate[i] - yaw_rate0
+        #roll[i] = roll[i]-roll0
+        #roll_rate[i] = roll_rate[i]-roll_rate0
+        #yaw_rate[i] = yaw_rate[i] - yaw_rate0
         
     u_a.append(delta_a)
     u_a.append(delta_r)
@@ -134,6 +136,6 @@ def Asymmetric_plot():
     plt.show()
 
 
-Symmetric_plot()
+Asymmetric_plot()
 
 
