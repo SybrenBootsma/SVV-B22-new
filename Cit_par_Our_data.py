@@ -11,8 +11,11 @@ from Test_data_outputs import *
 ## 
 #assymetric
 
-mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Aperiodic_roll_init()
-time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Spiral_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
+
+#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Aperiodic_roll_init()
+#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Aperiodic_roll()
 
 
 
@@ -139,15 +142,15 @@ CYr    = +0.8495 #no influence
 CYda   = -0.0400 #no influence
 CYdr   = +0.2300 #minor influence
 
-Clb    = -0.10260*1
+Clb    = -0.10260*0.75
 Clp    = -0.71085*2
-Clr    = +0.23760
-Clda   = -0.23088
+Clr    = +0.23760*0.5
+Clda   = -0.23088#*0.8
 Cldr   = +0.03440
 
-Cnb    =  +0.1348*2
+Cnb    =  +0.1348*0.5
 Cnbdot =   0     
 Cnp    =  -0.0602
 Cnr    =  -0.2061
-Cnda   =  -0.0120
+Cnda   =  -0.0120*2
 Cndr   =  -0.0939
