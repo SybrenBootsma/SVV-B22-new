@@ -184,7 +184,7 @@ def Dutch_roll():
 def Dutch_roll_YD_init():
  
     for i in range(len(time_ref)):
-        if time_ref[i] == 2765.-5.:
+        if time_ref[i] == 2765.-4.:
             begin_idx = i
         if time_ref[i] == 2765:
             end_idx = i
@@ -303,9 +303,9 @@ def Spiral():
     delta_a0 = Spiral_init()[6]
     
     for i in range(len(time_ref)):
-        if time_ref[i] == 2845.:
+        if time_ref[i] == 2840.:
             begin_idx = i
-        if time_ref[i] == 3050.:
+        if time_ref[i] == 3016.:
             end_idx = i
     
     #shortperiod lists
