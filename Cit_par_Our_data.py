@@ -5,7 +5,7 @@ from Test_data_outputs import *
 #symmetric
 mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
 time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
-
+#
 #mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
 #time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 ## 
@@ -115,8 +115,8 @@ CD = CD0 + (CLa * alpha0) ** 2 / (np.pi * A * e) # Drag coefficient [ ]
 # Stabiblity derivatives
 
 CX0    = W * np.sin(th0) / (0.5 * rho * Vt0 ** 2 * S)
-CXu    = -0.02792#*0.8
-CXa    = -0.47966#*0.8
+CXu    = -0.02792*0.8
+CXa    = -0.47966*0.8
 CXadot = +0.08330
 #CXq    = -0.28170
 CXq    = -0.28170#*2
