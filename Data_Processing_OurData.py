@@ -81,16 +81,23 @@ def Cl_Cd(BEW, Fused, Vt, rho, S, T):
 vel1 = velocity(IAS1, hp1, TAT1)  #Output: Vc, M, a, Vt, Ve, rho
 ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T1[0])
 plt.figure(1)
-plt.xlabel('Alpha')
-plt.ylabel('Cl')
+plt.subplots_adjust(top=0.957,bottom=0.07,left=0.064,right=0.987,hspace=0.239,wspace=0.14)
+plt.subplot(221)
+plt.title("$C_L - \\alpha$ curve")
+plt.xlabel('$\\alpha$ [deg]')
+plt.ylabel('$C_L$ [-]')
+plt.grid(True)
 plt.plot(AOA1, ClCd1[0])              #Cl-alpha graph
-plt.figure(2)
-plt.xlabel('Alpha')
-plt.ylabel('Cd')
-plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
-plt.figure(3)
-plt.xlabel('Cd')
-plt.ylabel('Cl')
+#plt.figure(2)
+#plt.xlabel('Alpha')
+#plt.ylabel('Cd')
+#plt.plot(AOA1, ClCd1[1])              #Cd-alpha graph
+#plt.figure(3)
+plt.subplot(222)
+plt.title("$C_L - C_D$ curve")
+plt.xlabel('$C_D$ [-]')
+plt.ylabel('$C_L$ [-]')
+plt.grid(True)
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)[0]
 print('CL Alpha is ', CLalpha)
@@ -136,10 +143,20 @@ def Cmdelta(BEW, Fused, Ve, Deltae, Cl, Tcs, Tc, mass, StickF):
     return Vetilde, Cmdelta, Destar, Stick
 
 Cmdelta1 = Cmdelta(BEW, Fused2, vel2[4], Deltae2, ClCd3[0], T2[3], T2[2], mass, StickF2)
-plt.figure(4)
+#plt.figure(4)
+plt.subplot(223)
+plt.title("$\delta_e^{\star} - \\tilde{V}_e$ curve")
+plt.grid(True)
+plt.xlabel("$\\tilde{V}_e$ [m/s]")
+plt.ylabel("$\delta_e^{\star}$ [deg]")
 plt.plot(Cmdelta1[0], Cmdelta1[2])  #Ve - Delta eq star plot
 
-plt.figure(5)
+#plt.figure(5)
+plt.subplot(224)
+plt.title("$F_e^{\star} - \\tilde{V}_e$ curve")
+plt.xlabel("$\\tilde{V}_e$ [m/s]")
+plt.ylabel("$F_e^{\star} [N]$")
+plt.grid(True)
 plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
 print('CM Delta is ', Cmdelta1[1])
 
