@@ -77,26 +77,39 @@ def Symmetric_plot():
         y_s[2][i]= y_s[2][i] + th0
 
     plt.subplot(221)
-    plt.plot(time, y_s[0], label = 'u')
+    plt.title("Forward speed")
+    plt.plot(time, y_s[0], label = 'u numerical model')
     plt.plot(time, u, label = 'u data')
     plt.xlabel("Time (s)")
-    plt.ylabel('y')
+    plt.ylabel('u (m/s)')
     plt.grid()
     plt.legend()
     
     plt.subplot(222)
-    plt.plot(time, y_s[1], label = 'alpha num')
-    plt.plot(time, alpha, label = 'alpha data')
+    plt.title("Angle of attack")
+    plt.plot(time, y_s[1], label = 'AoA numerical model')
+    plt.plot(time, alpha, label = 'AoA data')
+    plt.xlabel("Time (s)")
+    plt.ylabel('AoA (rad)')
+    plt.grid()
     plt.legend()
     
     plt.subplot(223)
-    plt.plot(time, y_s[2], label = 'theta num')
-    plt.plot(time, pitch, label = 'theta data')
+    plt.title('Pitch angle')
+    plt.plot(time, y_s[2], label = 'Pitch angle numerical model')
+    plt.plot(time, pitch, label = 'Pitch angle  data')
+    plt.xlabel("Time (s)")
+    plt.ylabel("Pitch angle (rad)")
+    plt.grid()
     plt.legend()
     
     plt.subplot(224)
-    plt.plot(time, y_s[3], label = 'pitch rate num')
-    plt.plot(time, pitch_rate, label = 'pitch rate data')
+    plt.title("Pitch rate")
+    plt.plot(time, y_s[3], label = 'Pitch rate numerical model')
+    plt.plot(time, pitch_rate, label = 'Pitch rate data')
+    plt.xlabel("Time (s)")
+    plt.ylabel('Pitch rate (rad/s)')
+    plt.grid()
     plt.legend()
     plt.show()
     
@@ -158,6 +171,6 @@ def Asymmetric_plot():
     plt.show()
 
 
-Asymmetric_plot()
+Symmetric_plot()
 
 
