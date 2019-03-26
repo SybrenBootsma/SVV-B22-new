@@ -132,8 +132,8 @@ def Asymmetric_plot():
     u_a = []
 #    Rudder is wrongly defined, corrected with a minus sign
     for i in range(len(time)):
-        delta_r[i]= -delta_r[i]
-        delta_a[i]= -delta_a[i]
+        delta_r[i]= delta_r[i]
+        delta_a[i]= delta_a[i]
         roll[i] = roll[i]-roll0
         roll_rate[i] = roll_rate[i]-roll_rate0
         yaw_rate[i] = yaw_rate[i] - yaw_rate0
