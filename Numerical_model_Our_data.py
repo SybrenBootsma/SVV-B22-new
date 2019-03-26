@@ -77,26 +77,43 @@ def Symmetric_plot():
         y_s[2][i]= y_s[2][i] + th0
 
     plt.subplot(221)
-    plt.plot(time, y_s[0], label = 'u')
-    plt.plot(time, u, label = 'u data')
+    plt.title("Forward speed")
+    
+    plt.plot(time, u, color = "darkblue"  , label = 'u data')
+    plt.plot(time, y_s[0], color = "orange" , label = 'u numerical model')
     plt.xlabel("Time (s)")
-    plt.ylabel('y')
+    plt.ylabel('$u$ (m/s)')
     plt.grid()
     plt.legend()
     
     plt.subplot(222)
-    plt.plot(time, y_s[1], label = 'alpha num')
-    plt.plot(time, alpha, label = 'alpha data')
+    plt.title("Angle of attack")
+    
+    plt.plot(time, alpha, color = "darkblue"  , label = 'AoA data')
+    plt.plot(time, y_s[1],color = "orange" , label = 'AoA numerical model')
+    plt.xlabel("Time (s)")
+    plt.ylabel('$\\alpha$ (rad)')
+    plt.grid()
     plt.legend()
     
     plt.subplot(223)
-    plt.plot(time, y_s[2], label = 'theta num')
-    plt.plot(time, pitch, label = 'theta data')
+    plt.title('Pitch angle')
+    
+    plt.plot(time, pitch,color = "darkblue" , label = 'Pitch angle  data')
+    plt.plot(time, y_s[2],color = "orange" , label = 'Pitch angle numerical model')
+    plt.xlabel("Time (s)")
+    plt.ylabel("$\\theta$ (rad)")
+    plt.grid()
     plt.legend()
     
     plt.subplot(224)
-    plt.plot(time, y_s[3], label = 'pitch rate num')
-    plt.plot(time, pitch_rate, label = 'pitch rate data')
+    plt.title("Pitch rate")
+    
+    plt.plot(time, pitch_rate,color = "darkblue" , label = 'Pitch rate data')
+    plt.plot(time, y_s[3],color = "orange" , label = 'Pitch rate numerical model')
+    plt.xlabel("Time (s)")
+    plt.ylabel('$q$ (rad/s)')
+    plt.grid()
     plt.legend()
     plt.show()
     
@@ -119,11 +136,11 @@ def Asymmetric_plot():
     
     plt.subplot(221)
     plt.title("Side Slip")
-    plt.plot(time, y_a[0], label = 'Side slip numerical model')
+    plt.plot(time, y_a[0], color = "orange" ,label = 'Side slip numerical model')
 #    plt.plot(time,delta_r)
 #    plt.plot(time,delta_a)
     plt.xlabel("Time (s)")
-    plt.ylabel('Side slip angle (rad)')
+    plt.ylabel('$\\beta (rad)$')
     plt.grid()
     
     #plt.plot(time, u_data, label = 'side slip data')
@@ -131,33 +148,35 @@ def Asymmetric_plot():
     
     plt.subplot(222)
     plt.title("Roll")
-    plt.plot(time, y_a[1], label = 'Roll numerical model')
-    plt.plot(time, roll, label = 'Roll data')
+    plt.plot(time, roll, color = "darkblue" ,label = 'Roll data')
+    plt.plot(time, y_a[1], color = "orange" ,label = 'Roll numerical model')
     plt.xlabel("Time (s)")
-    plt.ylabel('Roll angle (rad)')
+    plt.ylabel('$\\phi$ (rad)')
     plt.grid()
     plt.legend()
     
     plt.subplot(223)
     plt.title("Roll rate")
-    plt.plot(time, y_a[2], label = 'Roll rate numerical model')
-    plt.plot(time, roll_rate , label = 'Roll rate data')
+
+    plt.plot(time, roll_rate , color = "darkblue" , label = 'Roll rate data')
+    plt.plot(time, y_a[2], color = "orange" ,label = 'Roll rate numerical model')
     plt.xlabel("Time (s)")
-    plt.ylabel('Roll rate (rad/s)')
+    plt.ylabel('$p$ (rad/s)')
     plt.grid()
     plt.legend()
     
     plt.subplot(224)
     plt.title("Yaw rate")
-    plt.plot(time, y_a[3], label = 'Yaw rate numerical model')
-    plt.plot(time, yaw_rate, label = 'Yaw rate data')
+    
+    plt.plot(time, yaw_rate,color = "darkblue" , label = 'Yaw rate data')
+    plt.plot(time, y_a[3], color = "orange" ,label = 'Yaw rate numerical model')
     plt.xlabel("Time (s)")
-    plt.ylabel("Yaw rate (rad/s)")
+    plt.ylabel("$r$ (rad/s)")
     plt.grid()
     plt.legend()
     plt.show()
 
 
-Asymmetric_plot()
+Symmetric_plot()
 
 

@@ -109,7 +109,7 @@ def Short_period():
     for i in range(len(time_ref)):
         if time_ref[i] == 2441.:
             begin_idx = i
-        if time_ref[i] == 2475.:
+        if time_ref[i] == 2451.:
             end_idx = i
     
     #shortperiod lists
@@ -255,7 +255,7 @@ def Aperiodic_roll():
     delta_a0 = Aperiodic_roll_init()[6]
     
     for i in range(len(time_ref)):
-        if time_ref[i] == 2380.:
+        if time_ref[i] == 2383.:
             begin_idx = i
         if time_ref[i] == 2400.:
             end_idx = i
