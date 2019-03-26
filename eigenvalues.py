@@ -2,9 +2,9 @@
 """
 Created on Tue Mar 19 14:48:44 2019
 
-@author: Hidde Jansen
+@author: Hidde Knor Jansen laffe tyfus laf suf p
 """
-from Cit_par import *
+from Cit_par_Our_data import *
 import numpy as np
 
 #------------------------------------------------------------------------------
