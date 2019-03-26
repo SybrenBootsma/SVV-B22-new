@@ -3,19 +3,19 @@ from Test_data_outputs import *
 #Citation 550 - Linear simulation
 
 #symmetric
-mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
-time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
-#
+#mass, hp0, Vt0, alpha0, th0, delta_e0 = Pheugoid_init()
+#time, pitch_rate, u_s, alpha, pitch, u = Pheugoid()
+
 #mass, hp0, Vt0, alpha0, th0, delta_e0 = Short_period_init()
 #time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 ## 
 #assymetric
-
+#
 #mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Spiral_init()
 #time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Spiral()
 
-#mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Dutch_roll_YD_init()
-#time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll_YD()
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0 ,roll0, roll_rate0, yaw_rate0= Dutch_roll_init()
+time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
 
 
 

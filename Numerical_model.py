@@ -97,16 +97,15 @@ def Symmetric_plot():
     plt.legend()
     plt.show()
     
-    
 def Asymmetric_plot():
     u_a = []
 #    Rudder is wrongly defined, corrected with a minus sign
     for i in range(len(time)):
-        delta_r[i]= -delta_r[i]   
-        delta_a[i]= delta_a[i]
-        #roll[i] = roll[i]-roll0
-        #roll_rate[i] = roll_rate[i]-roll_rate0
-        #yaw_rate[i] = yaw_rate[i] - yaw_rate0
+        delta_r[i]= -delta_r[i]
+        delta_a[i]= -delta_a[i]
+        roll[i] = roll[i]-roll0
+        roll_rate[i] = roll_rate[i]-roll_rate0
+        yaw_rate[i] = yaw_rate[i] - yaw_rate0
         
     u_a.append(delta_a)
     u_a.append(delta_r)
@@ -115,25 +114,47 @@ def Asymmetric_plot():
     damp_a = ctr.damp(sys_a)
     
     plt.subplot(221)
-    plt.plot(time, y_a[0], label = 'Side slip')
+    plt.title("Side Slip")
+    plt.plot(time, y_a[0], color = "orange" ,label = 'Side slip numerical model')
+    plt.plot(time,delta_r)
+    plt.plot(time,delta_a)
+    plt.xlabel("Time (s)")
+    plt.ylabel('$\\beta (rad)$')
+    plt.grid()
+    
     #plt.plot(time, u_data, label = 'side slip data')
     plt.legend()
     
     plt.subplot(222)
-    plt.plot(time, y_a[1], label = 'Roll ')
-    plt.plot(time, roll, label = 'Roll data')
+    plt.title("Roll")
+    plt.plot(time, roll, color = "darkblue" ,label = 'Roll data')
+    plt.plot(time, y_a[1], color = "orange" ,label = 'Roll numerical model')
+    plt.xlabel("Time (s)")
+    plt.ylabel('$\\phi$ (rad)')
+    plt.grid()
     plt.legend()
     
     plt.subplot(223)
-    plt.plot(time, y_a[2], label = 'Roll rate')
-    plt.plot(time, roll_rate , label = 'Roll rate data')
+    plt.title("Roll rate")
+
+    plt.plot(time, roll_rate , color = "darkblue" , label = 'Roll rate data')
+    plt.plot(time, y_a[2], color = "orange" ,label = 'Roll rate numerical model')
+    plt.xlabel("Time (s)")
+    plt.ylabel('$p$ (rad/s)')
+    plt.grid()
     plt.legend()
     
     plt.subplot(224)
-    plt.plot(time, y_a[3], label = 'Yaw rate')
-    plt.plot(time, yaw_rate, label = 'Yaw rate data')
+    plt.title("Yaw rate")
+    
+    plt.plot(time, yaw_rate,color = "darkblue" , label = 'Yaw rate data')
+    plt.plot(time, y_a[3], color = "orange" ,label = 'Yaw rate numerical model')
+    plt.xlabel("Time (s)")
+    plt.ylabel("$r$ (rad/s)")
+    plt.grid()
     plt.legend()
     plt.show()
+    
 
 
 Asymmetric_plot()
