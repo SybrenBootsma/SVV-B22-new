@@ -138,13 +138,16 @@ def Dutch_roll_init():
     th0 = np.mean(pitch_ref[begin_idx:end_idx])
     delta_r0 = np.mean(delta_r_ref[begin_idx:end_idx])
     delta_a0 = np.mean(delta_a_ref[begin_idx:end_idx])
+    roll0 = np.mean(roll_ref[begin_idx:end_idx])
+    roll_rate0 = np.mean(roll_rate_ref[begin_idx:end_idx])
+    yaw_rate0 = np.mean(yaw_rate_ref[begin_idx:end_idx])
     
-    return mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0   
+    return mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0, roll0, roll_rate0, yaw_rate0
 
 
 def Dutch_roll():
-    delta_r0 = Dutch_roll_init()[-2]
-    delta_a0 = Dutch_roll_init()[-1]
+    delta_r0 = Dutch_roll_init()[5]
+    delta_a0 = Dutch_roll_init()[6]
     for i in range(len(time_ref)):
         if time_ref[i] == 3716.:
             begin_idx = i
@@ -159,6 +162,7 @@ def Dutch_roll():
     roll = roll_ref[begin_idx:end_idx]
     roll_rate = roll_rate_ref[begin_idx:end_idx]
     yaw_rate = yaw_rate_ref[begin_idx:end_idx]
+    
     for i in range(len(time)):
         delta_r[i] = delta_r[i]-delta_r0
         delta_a[i] = delta_a[i]-delta_a0

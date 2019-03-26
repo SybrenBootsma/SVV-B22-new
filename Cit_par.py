@@ -8,7 +8,7 @@ from Ref_data import *
 #time, pitch_rate, u_s, alpha, pitch, u = Short_period()
 # ,roll0, roll_rate0, yaw_rate0
 #assymetric
-mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0= Dutch_roll_init()
+mass, hp0, Vt0, alpha0, th0, delta_r0, delta_a0, roll0, roll_rate0, yaw_rate0 = Dutch_roll_init()
 time, delta_r, delta_a, beta, roll, roll_rate, yaw_rate = Dutch_roll()
 
 
