@@ -78,15 +78,20 @@ def Cl_Cd(BEW, Fused, Vt, rho, S, T):
     return Cl, Cd, W
 
 # Calculation graphs with results from test 1
-vel1 = velocity(IAS1, hp1, TAT1)  #Output: Vc, M, a, Vt, Ve, rho
+vel1 = velocity(IAS1, hp1, TAT1)  #Output: Vc, M, a, Vt, Ve, rho, Re
+Re1 = vel1[6]
+M1 = vel1[1]
+print ('Min max M is ', np.min(M1), np.max(M1))
+print ('Min max Re is ', np.min(Re1), np.max(Re1))
 ClCd1 = Cl_Cd(BEW, Fused1, vel1[3], vel1[5], S, T1[0])
 plt.figure(1)
-plt.subplots_adjust(top=0.957,bottom=0.07,left=0.064,right=0.987,hspace=0.239,wspace=0.14)
+plt.subplots_adjust(top=0.957,bottom=0.07,left=0.079,right=0.932,hspace=0.239,wspace=0.14)
 plt.subplot(221)
 plt.title("$C_L - \\alpha$ curve")
 plt.xlabel('$\\alpha$ [deg]')
 plt.ylabel('$C_L$ [-]')
 plt.grid(True)
+plt.text(1.5,0.85,"0.202 < M < 0.442\n7.44e6 < Re < 16.09e6", fontsize=10, bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})
 plt.plot(AOA1, ClCd1[0])              #Cl-alpha graph
 #plt.figure(2)
 #plt.xlabel('Alpha')
@@ -99,8 +104,9 @@ plt.xlabel('$C_D$ [-]')
 plt.ylabel('$C_L$ [-]')
 plt.grid(True)
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
+plt.text(0.027,0.85,"0.202 < M < 0.442\n7.44e6 < Re < 16.09e6", fontsize=10, bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 10})
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)[0]
-print('CL Alpha is ', CLalpha)
+print('CL Alpha is ', CLalpha*180/pi)
 
 Update = np.polyfit(ClCd1[0]**2, ClCd1[1], 1)
 print('Cd0 is', Update[1])
@@ -158,7 +164,7 @@ plt.xlabel("$\\tilde{V}_e$ [m/s]")
 plt.ylabel("$F_e^{\star} [N]$")
 plt.grid(True)
 plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
-print('CM Delta is ', Cmdelta1[1])
+print('CM Delta is ', Cmdelta1[1]*180/pi)
 
 Cmalpha = np.polyfit(AOA2, Cmdelta1[2], 1)[0] * -Cmdelta1[1]
-print('CM Alpha is ', Cmalpha)
+print('CM Alpha is ', Cmalpha*180/pi)
