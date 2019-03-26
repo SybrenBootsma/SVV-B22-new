@@ -136,6 +136,6 @@ def Asymmetric_plot():
     plt.show()
 
 
-Asymmetric_plot()
+Symmetric_plot()
 
 
