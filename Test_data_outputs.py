@@ -69,7 +69,7 @@ def Pheugoid():
     #print (delta_e0)
     #pheugoid 250 sec
     for i in range(len(time_ref)):
-        if time_ref[i] == 2480.:
+        if time_ref[i] == 2490.:
             begin_idx = i
         if time_ref[i] == 2630.:
             end_idx = i
@@ -151,9 +151,9 @@ def Dutch_roll():
     #print (delta_r0)
     delta_a0 = Dutch_roll_init()[6]
     for i in range(len(time_ref)):
-        if time_ref[i] == 2712.:
+        if time_ref[i] == 2713.:
             begin_idx = i
-        if time_ref[i] == 2728.:
+        if time_ref[i] == 2728+15.:
             end_idx = i
     
     #shortperiod lists
@@ -231,11 +231,14 @@ def Dutch_roll_YD():
 
 def Aperiodic_roll_init():
  
-    for i in range(len(time_ref)):
-        if time_ref[i] == 2384.-5.:
-            begin_idx = i
-        if time_ref[i] == 2384:
-            end_idx = i
+
+    begin_idx = np.where(time_ref == 2384.-5)[0][0]
+    end_idx = np.where(time_ref == 2384.)[0][0]
+        
+##        if time_ref[i] == 2384.-5.:
+##            begin_idx = 
+#        if time_ref[i] == 2384.:
+#            end_idx = i
     mass = mass_ref[begin_idx]    
     hp0 = np.mean(hp_ref[begin_idx:end_idx]*0.3048)
     Vt0 = np.mean(tas_ref[begin_idx:end_idx])
