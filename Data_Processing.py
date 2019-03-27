@@ -93,7 +93,7 @@ plt.xlabel('Cd')
 plt.ylabel('Cl')
 plt.plot(ClCd1[1], ClCd1[0])            #Cl-Cd graph
 CLalpha = np.polyfit(AOA1, ClCd1[0], 1)[0]
-print('CL Alpha is ', CLalpha)
+print('CL Alpha is ', CLalpha*180/pi)
 
 Update = np.polyfit(ClCd1[0]**2, ClCd1[1], 1)
 print('Cd0 is', Update[1])
@@ -141,9 +141,9 @@ plt.plot(Cmdelta1[0], Cmdelta1[2])  #Ve - Delta eq star plot
 
 plt.figure(5)
 plt.plot(Cmdelta1[0], Cmdelta1[3])  #Ve - Stick force plot
-print('CM Delta is ', Cmdelta1[1])
+print('CM Delta is ', Cmdelta1[1]*180/pi)
 
 plt.figure(6)
 plt.plot(AOA2, Cmdelta1[2])
 Cmalpha = np.polyfit(AOA2, Cmdelta1[2], 1)[0] * -Cmdelta1[1]
-print('CM Alpha is ', Cmalpha)
+print('CM Alpha is ', Cmalpha*180/pi)

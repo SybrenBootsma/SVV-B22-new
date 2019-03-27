@@ -26,4 +26,8 @@ def velocity(V_IAS,hp,Tm):
     Vt = M*a
     rho = rho0 * (T/T0)**(-(g0/(lapse*R) + 1))
     Ve = Vt * np.sqrt(rho/rho0)
-    return Vc, M, a, Vt, Ve, rho
+    b = 1.458*10**(-6)
+    S = 110.4
+    mu = b * T**(3/2) / (T+S)
+    Re = rho * Vt * 2.0569 / mu
+    return Vc, M, a, Vt, Ve, rho, Re
